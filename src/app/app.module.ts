@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SettingComponent } from './pages/setting/setting.component';
 import { GoldenComponent } from './pages/golden/golden.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { GoldenComponent } from './pages/golden/golden.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgZorroAntdModule,
+    NzButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
