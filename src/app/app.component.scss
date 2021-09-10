@@ -3,4 +3,18 @@
     min-height: 600px;
     height: 100%;
     background-color: gray;//后面设置可以动态改变
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/pictures/app_bg1.jpg);
+    border-radius: 6px;
+    border-radius: 6px;
+}
+
+.loading{
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 30%;
+    z-index: 999;
+    width: 6rem;
 }

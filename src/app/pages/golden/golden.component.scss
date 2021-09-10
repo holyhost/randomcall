@@ -1,0 +1,78 @@
+.container{
+
+    background-image: url(../../../assets/pictures/name_bg1.jpg);
+    // background-size:cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+	max-width: 900px;
+    min-width: 660px;
+    max-height: 640px;
+    min-height: 460px;
+	border-radius: 1rem;
+	padding-bottom: 2rem;
+}
+
+
+.choose {
+	margin-right: 1rem;
+    margin-top: 2rem;
+    text-align: right;
+}
+
+nz-select {
+    width: 9rem;
+}
+
+#lucky {
+    width: 100%;
+    height: 80%;
+    // background-color: rgb(233, 248, 214);
+    // border: 1px solid rgb(130, 216, 18);
+    font-size: 5rem;
+    font-weight: 600;
+    font-family: 'Rig Bold Inline', sans-serif;
+    line-height: 200px;
+    text-align: center;
+    margin: 40px auto 30px auto;
+	padding: 1rem 2rem;
+    border-radius: 10px;
+	margin-top: 5rem;
+  }
+  span {
+	display: block;
+
+    color: #ded428;
+    text-align: center;
+    font-size: 118px;
+    font-family: "Rig Bold Inline", sans-serif;
+	text-shadow: 7px 7px 4px #636363;
+    -webkit-text-stroke: 0.1px black;
+    letter-spacing: -2.5rem;
+  }
+
+
+@font-face {
+	font-family:'Rig Bold Coarse'; 
+	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
+}
+
+@font-face {
+	font-family:'Rig Bold Extrude'; 
+	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
+}
+
+@font-face {
+	font-family:'Rig Bold Shadow'; 
+	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
+}
+
+@font-face {
+	font-family:'Rig Bold Face'; 
+	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
+}
+
+@font-face {
+	font-family:'Rig Bold Inline'; 
+	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
+}
+
