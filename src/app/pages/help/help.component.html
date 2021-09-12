@@ -1,0 +1,27 @@
+<div class="help-container">
+    <nz-list nzItemLayout="horizontal">
+        <nz-list-item *ngFor="let item of data" style="background: white;">
+            <div class="icon-container">
+                <svg class="icon" aria-hidden="true">
+                    <use [attr.xlink:href]="item.icon"></use>
+                </svg>
+            </div>
+
+          <nz-list-item-meta
+            [nzTitle] = "item.title"
+            [nzDescription]="item.content"
+          >
+
+          </nz-list-item-meta>
+
+          <ng-container *ngIf="item.type ==='img'">
+            <img class="picture" [src]="item.path" nz-popover [nzPopoverTitle]="item.title" [nzPopoverContent]="contentTemplate">
+            <ng-template #contentTemplate>
+                <img class="picture-big" [src]="item.path">
+            </ng-template>
+        </ng-container>
+            
+        </nz-list-item>
+        <!-- <nz-list-empty *ngIf="data.length === 0"></nz-list-empty> -->
+      </nz-list>
+</div>

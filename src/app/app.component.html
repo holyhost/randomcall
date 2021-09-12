@@ -1,5 +1,7 @@
 <div class="app-container">
-    <app-golden *ngIf="!data.isLoading"></app-golden>
+    <app-header [headers]='headerItems' class="app-header"></app-header>
+    <!-- <app-golden *ngIf="!data.isLoading"></app-golden> -->
+    <router-outlet ></router-outlet>
     <ng-container *ngIf="data.isLoading">
         <nz-spin nzSimple [nzSize]="'large'" class="loading" nzTip="加载数据中"></nz-spin>
     </ng-container>

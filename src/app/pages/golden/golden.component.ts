@@ -42,7 +42,6 @@ export class GoldenComponent implements OnInit,AfterViewInit {
       this.t = setInterval( ()=>{
         // console.log(1);
         var sj = Math.round(Math.random() * (arr.length - 1));
-        console.log(arr[sj].name);
         this.luckyName = arr[sj].name;
       }, 37)
       this.btnText = "结束"//更改按钮的内容
