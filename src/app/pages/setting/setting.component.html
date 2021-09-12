@@ -1,11 +1,52 @@
-<p>setting works!</p>
-<p>setting works!</p>
-<p>setting works!</p>
-<p>setting works!</p>
-<p>setting works!</p>
-<p>setting works!</p>
-<p>setting works!</p>
-<p>setting works!</p>
-<p>setting works!</p>
+<div class="setting-container">
+    <nz-list nzItemLayout="horizontal">
+        <nz-list-item  style="background: white;">
+            <!-- <div class="icon-container">
+                <svg class="icon" aria-hidden="true">
+                    <use [attr.xlink:href]="item.icon"></use>
+                </svg>
+            </div> -->
 
+          <nz-list-item-meta
+            nzTitle = "语言"
+          >
+          </nz-list-item-meta>
+          <button nz-button class="icon-container">中文</button>
+          <button nz-button class="icon-container">英文</button>
 
+        </nz-list-item>
+        <nz-list-item  style="background: white;">
+            <!-- <div class="icon-container">
+                <svg class="icon" aria-hidden="true">
+                    <use [attr.xlink:href]="item.icon"></use>
+                </svg>
+            </div> -->
+
+          <nz-list-item-meta
+            nzTitle = "背景"
+          >
+          </nz-list-item-meta>
+          <div [ngClass]="{'icon-container1':theme.curTheme === 'theme1','icon-container':theme.curTheme !== 'theme1'}" (click)="onBgChoose(0)">
+              <img src="assets/pictures/app_bg1.png" class="bgstyle"> 
+          </div>
+          <div [ngClass]="{'icon-container1':theme.curTheme === 'theme2','icon-container':theme.curTheme !== 'theme2'}" (click)="onBgChoose(1)">
+              <img src="assets/pictures/app_bg2.png" class="bgstyle"> 
+          </div>
+          <div  [ngClass]="{'icon-container1':theme.curTheme === 'theme3','icon-container':theme.curTheme !== 'theme3'}" (click)="onBgChoose(2)">
+              <img src="assets/pictures/app_bg3.png" class="bgstyle"> 
+          </div>
+          <div  [ngClass]="{'icon-container1':theme.curTheme === 'theme4','icon-container':theme.curTheme !== 'theme4'}" (click)="onBgChoose(3)">
+              <img src="assets/pictures/app_bg4.png" class="bgstyle"> 
+          </div>
+
+        </nz-list-item>
+        <nz-list-item  style="background: white;">
+
+          <nz-list-item-meta
+            nzTitle = "缓存"
+            nzDescription="清空本地缓存及相关设置，恢复到默认（未实现）。"
+          >
+          </nz-list-item-meta>
+        </nz-list-item>
+      </nz-list>
+</div>

@@ -1,0 +1,66 @@
+@import './base.scss';
+
+//一整套
+@mixin def_theme() {
+    // 可以考虑用for循环生成
+    // 黑色主题
+    :host-context([theme-style='theme1']) & {
+        color: $dark_color;
+        background-image: url('/assets/pictures/app_bg1.png');
+    }
+    // 亮色主题
+    :host-context([theme-style='theme2']) & {
+        color: $light_color;
+        background-image: url('/assets/pictures/app_bg2.png');
+    }
+    // 常用主题
+    :host-context([theme-style='theme3']) & {
+        color: $contrast_color;
+        background-image: url('/assets/pictures/app_bg3.png');
+    }
+    // theme4_main
+    :host-context([theme-style='theme4']) & {
+        color: $theme4_color;
+        background-image: url('/assets/pictures/app_bg4.png');
+    }
+    // theme5_main
+    :host-context([theme-style='theme5']) & {
+        color: $theme5_color;
+        background-color: $theme5_main;
+    }
+    // theme6_main
+    :host-context([theme-style='theme6']) & {
+        color: $theme6_color;
+        background-color: $theme6_main;
+    }
+}
+
+// 单独设置 背景颜色
+@mixin bg_color() {
+    :host-context([theme-style='dark']) & {
+        background-color: $dark;
+    }
+    :host-context([data-theme-style='light']) & {
+        background-color: $light;
+    }
+}
+
+// 单独设置 字体颜色
+@mixin font_color() {
+    :host-context([theme-style='dark']) & {
+        color: $dark-color;
+    }
+    :host-context([theme-style='light']) & {
+        color: $light-color;
+    }
+}
+// 单独设置 边框颜色
+@mixin border_color(){
+    :host-context([theme-style='dark']) & {
+        border: solid 2px $dark;
+    }
+
+    :host-context([theme-style='light']) & {
+        border: solid 2px $light;
+    }
+}
