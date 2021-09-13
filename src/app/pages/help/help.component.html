@@ -8,14 +8,14 @@
             </div>
 
           <nz-list-item-meta
-            [nzTitle] = "item.title"
-            [nzDescription]="item.content"
+            [nzTitle] = "item.title | translate"
+            [nzDescription]="item.content | translate"
           >
 
           </nz-list-item-meta>
 
           <ng-container *ngIf="item.type ==='img'">
-            <img class="picture" [src]="item.path" nz-popover [nzPopoverTitle]="item.title" [nzPopoverContent]="contentTemplate">
+            <img class="picture" [src]="item.path" nz-popover [nzPopoverTitle]="item.title | translate" [nzPopoverContent]="contentTemplate">
             <ng-template #contentTemplate>
                 <img class="picture-big" [src]="item.path">
             </ng-template>

@@ -1,0 +1,22 @@
+{
+    "menu_random_call":"随机点名",
+    "menu_setting":"设置",
+    "menu_help":"帮助",
+    "item_language":"语言",
+    "item_bg":"背景",
+    "item_random_time":"随机时间",
+    "item_second":"秒",
+    "item_cache":"缓存",
+    "title_update_stu_info":"修改学生信息",
+    "title_update_theme":"更换主题",
+    "title_tea_tip":"请作者喝茶",
+    "title_issue_feedback":"问题反馈",
+    "message_update_stu_info":"修改学生信息",
+    "message_update_theme":"软件内置了一些主题，在设置界面选择你喜欢的主题吧。",
+    "message_tea_tip":"软件很实用，开发也不容易，[微信]赏作者一杯茶喝吧！",
+    "message_issue_feedback":"请发送相关问题，及详细描述信息到邮箱: zx9797997@163.com",
+    "message_random_time":"设置随机点名中自动暂停所需时间",
+    "message_load_data":"加载数据中",
+    "message_choose_class":"选择班级",
+    "title_update_":"Cache"
+}

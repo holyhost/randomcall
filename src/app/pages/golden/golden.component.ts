@@ -29,7 +29,6 @@ export class GoldenComponent implements OnInit,AfterViewInit {
 
 
   onStart(){
-    console.log(this.curClass)
     let choosedClass = this.data.allData.find(item=>item.className === this.curClass)
     if(!choosedClass || choosedClass.students.length<1){
       return
@@ -50,7 +49,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         this.state=0;
         clearInterval(this.t);
         this.btnText = '开始'
-      }, 5000+Math.round(Math.random() * 1000));
+      }, this.data.randomTime*1000+Math.round(Math.random() * 1000));
 
     }else{
       this.state=0;

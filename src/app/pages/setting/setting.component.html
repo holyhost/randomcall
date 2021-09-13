@@ -8,11 +8,11 @@
             </div> -->
 
           <nz-list-item-meta
-            nzTitle = "语言"
+            [nzTitle] = "'item_language' | translate"
           >
           </nz-list-item-meta>
-          <button nz-button class="icon-container">中文</button>
-          <button nz-button class="icon-container">英文</button>
+          <button nz-button class="icon-container" (click)="onLanguageChange('zh-CN')" [nzType]="data.language === 'zh-CN'? 'primary':'default'">中文</button>
+          <button nz-button class="icon-container" (click)="onLanguageChange('en-US')" [nzType]="data.language === 'en-US'? 'primary':'default'">英文</button>
 
         </nz-list-item>
         <nz-list-item  style="background: white;">
@@ -23,7 +23,7 @@
             </div> -->
 
           <nz-list-item-meta
-            nzTitle = "背景"
+            [nzTitle] = "'item_bg' | translate"
           >
           </nz-list-item-meta>
           <div [ngClass]="{'icon-container1':theme.curTheme === 'theme1','icon-container':theme.curTheme !== 'theme1'}" (click)="onBgChoose(0)">
@@ -43,10 +43,26 @@
         <nz-list-item  style="background: white;">
 
           <nz-list-item-meta
-            nzTitle = "缓存"
+            [nzTitle] = "'item_cache' | translate"
             nzDescription="清空本地缓存及相关设置，恢复到默认（未实现）。"
           >
           </nz-list-item-meta>
+        </nz-list-item>
+        <nz-list-item  style="background: white;">
+
+          <nz-list-item-meta
+            [nzTitle] = "'item_random_time' | translate"
+            [nzDescription]="'message_random_time' | translate"
+          >
+          </nz-list-item-meta>
+          <div class="timec">
+            <nz-input-group [nzSuffix]="'item_second' | translate">
+              <nz-input-number [(ngModel)]="randomTime" [nzMin]="1" [nzMax]="100" [nzStep]="0.5" (ngModelChange)="onTimeChange($event)">
+
+              </nz-input-number>
+            </nz-input-group>
+          </div>
+          
         </nz-list-item>
       </nz-list>
 </div>
