@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 
 <head>
   <meta charset="utf-8">
@@ -194,9 +194,8 @@ nz-select {
   var aaCount = 0
   for(var ii = 0;ii<school.length;ii++){
     selHtml= selHtml+'<option value="'+aaCount+'">'+ school[ii].clzname+'</option>'
-	aaCount++
+	  aaCount++
   }
-  console.log(selHtml)
   selectClass.innerHTML= selHtml //设置所有班级的下拉框
   // selectClass.onchange = function(){console.log(selectClass.selectedIndex)}
   var state = 0;//定义状态，开始和结束
