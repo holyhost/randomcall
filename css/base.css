@@ -49,11 +49,35 @@ nz-select {
     letter-spacing: -2.5rem;
   }
 
+  #addtea{
+    padding: .2rem 1rem;
+      color: gray;
+      background: white;
+      border-color: white;
+      border-radius: 5px;
+  }
+  
+  #addsalt{
+    padding: .2rem 1rem;
+      color: orange;
+      background: white;
+      border-color: white;
+      border-radius: 5px;
+  }
+  #addbg{
+    padding: .2rem 1rem;
+      color: #0865da;
+      background: white;
+      border-color: white;
+      border-radius: 5px;
+  }
+
 
 
 @font-face {
 	font-family:'MyFont'; 
 	src:url(./font/Slidexiaxing-Regular.ttf);
+    letter-spacing: -3rem !important;
 }
 
 

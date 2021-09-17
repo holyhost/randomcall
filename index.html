@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" style="height: 100%;">
+<html lang="en" style="height:100%">
 
 <head>
   <meta charset="utf-8">
@@ -8,12 +8,16 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" type="text/css" href="./css/base.css">
+ 
 </head>
 
 <body>
   <!-- 随机点名模块 -->
-  <div class="random-container">
+  <div class="random-container" id="random-container">
     <div class="choose">
+		<button id="addtea">加分</button>
+		<button id="addsalt">减分</button>
+		<button id="addbg">背景</button>
       <select name="chooseClass" id="chooseClass">
       </select>
     </div>
@@ -22,7 +26,6 @@
       <!-- 随机点名 -->
     </div>
   </div>
-
 </body>
 
 <script>
@@ -64,35 +67,80 @@
         "小霸王C"
       ]
     }
-  ]
+	]
 
+  var rdmContainer = document.getElementById("random-container");//获取元素
   var luckyName = document.getElementById("luckyName");//获取元素
   var selectClass = document.getElementById("chooseClass");//获取元素
+  var addtea = document.getElementById("addtea")
+  var addsalt = document.getElementById("addsalt")
+  var addbg = document.getElementById("addbg")
   var selHtml = ''
   var aaCount = 0
-  school.forEach(item=>{
-    selHtml= selHtml+'<option value="'+aaCount+'">'+ item.clzname+'</option>'
-    aaCount++
-  })
+  for(var ii = 0;ii<school.length;ii++){
+    selHtml= selHtml+'<option value="'+aaCount+'">'+ school[ii].clzname+'</option>'
+	  aaCount++
+  }
   console.log(selHtml)
   selectClass.innerHTML= selHtml //设置所有班级的下拉框
+  // selectClass.onchange = function(){console.log(selectClass.selectedIndex)}
   var state = 0;//定义状态，开始和结束
   var t;
   var tout
+  var sj;
+  var arr;
+  addtea.onclick = function () {
+    if(arr[sj].indexOf(' ')<0){
+      arr[sj] = arr[sj]+' 1'
+    }else{
+      var temparr = arr[sj].split(' ');
+      arr[sj] = temparr[0]+' '+(1+Number(temparr[1]));
+    
+    }
+    console.log(arr[sj])
+    luckyName.innerHTML = arr[sj];
+  }
+  addsalt.onclick = function () {
+    if(arr[sj].indexOf(' ')<0){
+      arr[sj] = arr[sj]+' -1'
+    }else{
+      var temparr = arr[sj].split(' ');
+      arr[sj] = temparr[0]+' '+(Number(temparr[1])-1);
+    
+    }
+    var temparr = arr[sj].split(' ');
+    if(temparr[1] == '0'){
+      arr[sj] = temparr[0]
+    }
+    console.log(arr[sj])
+    luckyName.innerHTML = arr[sj];
+  }
+  var bgChange = -1;
+  rdmContainer.style.backgroundImage = 'url()'
+  addbg.onclick = function () {
+    if(bgChange>0){
+      rdmContainer.style.backgroundImage = 'url()'
+    }else{
+      rdmContainer.style.backgroundImage = 'url(./css/img/name_bg1.jpg)'
+    }
+    bgChange = bgChange *(-1);
+    
+    
+  }
   luckyName.onclick = function () {
-    var arr = school[selectClass.selectedIndex].students
+    arr = school[selectClass.selectedIndex].students
     clearTimeout(tout)
     if (state == 0) {
       //如果是0即开始随机，变为1时结束，不是0时执行else
       clearInterval(t);
       t = setInterval(function () {
         // console.log(1);
-        var sj = Math.round(Math.random() * (arr.length - 1));
+        sj = Math.round(Math.random() * (arr.length - 1));
         luckyName.innerHTML = arr[sj];
       }, 37)
 
       state = 1;
-      tout = setTimeout(() => {
+      tout = setTimeout(function () {
         state = 0;
         clearInterval(t);
 
