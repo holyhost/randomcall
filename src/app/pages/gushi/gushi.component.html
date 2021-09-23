@@ -1,0 +1,12 @@
+
+<div class="container">
+    <div class="gushi_item" *ngFor="let item of shiList">
+        <h3>
+            <svg class="icon" aria-hidden="true">
+                <use [attr.xlink:href]="item.icon"></use>
+            </svg>
+            {{item.title}}
+        </h3>
+        <p *ngFor="let jz of item.shiju">{{jz}}</p>
+    </div>
+</div>

@@ -6,6 +6,7 @@ import { Observable, timer } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/internal/operators';
 import { Config } from './bean/config.constant';
 import { Student } from './bean/student.type';
+import { environment } from 'src/environments/environment';
 
 type AllClass = {
   id: number,
@@ -13,22 +14,32 @@ type AllClass = {
   students:Student[]
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  account = '';
+  pwd = '';
+  redirectUrl = '';
+  proxy = "";
   isLoading: boolean = true
   allData: AllClass[] = []//所有班级及学生数据
   randomTime: number = 5;
   language=''
   constructor(
     public http: HttpClient,
-    private i18n: TranslateService
+    private i18n: TranslateService,
   ) { 
+    if(!environment.production){
+      this.proxy = "xampp/"
+    }
+    
     let time = this.getItem(Config.RandomTime)
     if(time){
       this.randomTime = Number.parseFloat(time)
     }
+    this.readUserStatus();
     this.initPersonData().subscribe(res=>{
       this.allData = res
       this.delayShow(1888)
@@ -114,5 +125,121 @@ export class DataService {
     localStorage.setItem(Config.AppName+key,value);
   }
 
+  login(params:any){
+    this.isLoading = true;
+    let dat = new Date();
+    params.morep1 = this.randomString(dat.getMinutes()%5+4);
+    params.morep2 = this.randomString(dat.getMinutes()%6+3);
+    console.log(params)
+    return this.http.post(this.proxy+"api/v1/user/login.php",params).pipe(
+      map(data=>{
+        console.log(typeof(data))
+        console.log(data)
+        this.isLoading = false
+        return data;
+      })
+    )
+  }
+  register(params:any){
+    this.isLoading = true;
+    return this.http.post(this.proxy+"api/v1/user/register.php",params).pipe(
+      map(data=>{
+        console.log(typeof(data))
+        console.log(data)
+        this.isLoading = false
+        return data;
+      })
+    )
+  }
 
+  logout(){
+    this.isLoading = true;
+    let params = {
+      "username":this.account,
+      "pwd2":this.pwd
+    }
+    return this.http.post(this.proxy+"api/v1/user/logout.php",params).pipe(
+      map((data:any)=>{
+        if(data && data.status&&data.status === 'ok'){
+          this.setItem(Config.UserAccount,'');
+        }
+        this.isLoading = false
+        return data;
+      })
+    )
+  }
+
+  getStudents(){
+    this.isLoading = true;
+    let params = {
+      "teaname":this.account,
+      "token":this.pwd
+    }
+    return this.http.post(this.proxy+"api/v1/student/get.php",params).pipe(
+      map((data:any)=>{
+
+        this.isLoading = false
+        return data;
+      })
+    )
+  }
+
+  addStudents(clazname:string,stus: string[]){
+    this.isLoading = true;
+    let params = {
+      "teaname":this.account,
+      "token":this.pwd,
+      "clazname":clazname,
+      "students":stus,
+    }
+    return this.http.post(this.proxy+"api/v1/student/add.php",params).pipe(
+      map((data:any)=>{
+        this.isLoading = false
+        return data;
+      })
+    )
+  }
+
+
+
+
+  randomString(e:number) {  
+    e = e || 32
+    let t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678"
+    let a = t.length
+    let n = "";
+    for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a));
+    return n
+  }
+
+
+
+  saveUserStatus(){
+    if(this.account && this.pwd){
+      let info = this.account +"_123_"+this.pwd+"_123_"+new Date().getTime().toString();
+      // let result = window.atob(info)
+      // console.log(result)
+      this.setItem(Config.UserAccount,info)
+    }
+  }
+
+  readUserStatus(){
+    let info = this.getItem(Config.UserAccount)
+    // console.log(info)
+    // info = window.atob(info)
+    // console.log(info)
+    if(info){
+      let result = info.split("_123_")
+      console.log(1)
+      if(result && result.length == 3){
+        console.log(result[2])
+        if(result[2]&&(Number.parseInt(result[2])-new Date().getTime())<10*24*60*60*1000){
+          this.account = result[0]
+          this.pwd = result[1]
+          console.log(3)
+        }
+        
+      }
+    }
+  }
 }

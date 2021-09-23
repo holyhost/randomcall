@@ -3,4 +3,5 @@ export enum Config {
     Theme = 'theme-style',
     Language = 'my-language',
     RandomTime = 'random-time',
+    UserAccount = 'xgsfayafa',
 }

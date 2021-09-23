@@ -9,6 +9,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class AppComponent {
   title = 'randomcall';
+  isLoading = false;
   headerItems = [
     {name:'menu_random_call',icon:'#icon-dianmingicon-32',path:'/golden'},
     {name:'menu_setting',icon:'#icon-xitong-copy',path:'/setting'},
@@ -16,7 +17,7 @@ export class AppComponent {
   ]
   
   constructor(public data:DataService,public theme: ThemeService){
-
+    
   }
   
 }

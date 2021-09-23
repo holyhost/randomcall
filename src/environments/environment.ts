@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  supportedLocale:['en-US','zh-CN']
+  supportedLocale:['en-US','zh-CN'],
+  baseUrl: 'http://localhost:8089/pojun/'
 };
 
 /*

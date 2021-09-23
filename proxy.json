@@ -1,0 +1,13 @@
+{
+
+    "/xampp": {
+        "target":"http://localhost:8089/pojun/",
+        "secure":false,
+        "loglevel":"debug",
+        "changeOrigin":true,
+        "pathRewrite":{
+            "^/xampp":"/"
+        }
+    }
+    
+}

@@ -4,13 +4,15 @@ import { Inject, LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './pages/header/header.component';
 import {TranslateModule,TranslateLoader,TranslateService} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
+import { HeadModule } from './pages/head/head.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 
 
 export function TranslateLoaderFactory(http: HttpClient) {
@@ -27,7 +29,7 @@ export function LocaleIdFactory() {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +37,8 @@ export function LocaleIdFactory() {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgZorroAntdModule,
-    NzButtonModule,
+    NzSpinModule,
+    HeadModule,
     TranslateModule.forRoot({//配置i18n
       loader: {
           provide: TranslateLoader,
@@ -50,7 +52,8 @@ export function LocaleIdFactory() {
     {
       provide: LOCALE_ID,
       useFactory: LocaleIdFactory
-    }
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
 })

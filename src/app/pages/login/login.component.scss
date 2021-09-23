@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.login_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    h2{
+        margin-bottom: 4rem;
+        font-weight: bold;
+        color: #777777;
+        letter-spacing: 1rem;
+    }
+}
+
+.login-form {
+    max-width: 300px;
+    float: center;
+    width: 100%;
+  }
+
+  .login-form-margin {
+      margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+
+  .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }

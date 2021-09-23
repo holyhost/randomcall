@@ -1,3 +1,4 @@
+<app-head></app-head>
 <div class="setting-container">
     <nz-list nzItemLayout="horizontal">
         <nz-list-item  style="background: white;">
@@ -37,6 +38,12 @@
           </div>
           <div  [ngClass]="{'icon-container1':theme.curTheme === 'theme4','icon-container':theme.curTheme !== 'theme4'}" (click)="onBgChoose(3)">
               <img src="assets/pictures/app_bg4.png" class="bgstyle"> 
+          </div>
+          <div  [ngClass]="{'icon-container1':theme.curTheme === 'theme4','icon-container':theme.curTheme !== 'theme5'}" (click)="onBgChoose(4)">
+              <img src="assets/pictures/app_bg5.png" class="bgstyle"> 
+          </div>
+          <div  [ngClass]="{'icon-container1':theme.curTheme === 'theme4','icon-container':theme.curTheme !== 'theme6'}" (click)="onBgChoose(5)">
+              <img src="assets/pictures/app_bg6.png" class="bgstyle"> 
           </div>
 
         </nz-list-item>

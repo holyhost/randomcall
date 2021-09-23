@@ -9,6 +9,7 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { FormsModule } from '@angular/forms';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { TranslateModule } from '@ngx-translate/core';
+import { HeadModule } from '../head/head.module';
 
 @NgModule({
   declarations: [SettingComponent],
@@ -21,6 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NzButtonModule,
     NzMessageModule,
     NzInputModule,
+    HeadModule,
     NzListModule
   ]
 })

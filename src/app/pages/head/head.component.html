@@ -1,0 +1,23 @@
+<div class="site-page-header-ghost-wrapper">
+    <nz-page-header [nzGhost]="true">
+      <nz-page-header-title onclick="window.location='index.html'"><img class="logo" src="assets/pictures/logo.png" >  破军突破</nz-page-header-title>
+      <nz-page-header-extra>
+        <span class="menu_item" (click)="onItemClick('wather')">天气</span>
+        <span class="menu_item" (click)="onItemClick('golden')">点名</span>
+        <span class="menu_item" (click)="onItemClick('setting')">设置</span>
+        <a nz-dropdown class="account" [nzDropdownMenu]="menu" *ngIf="status">
+          {{loginName}}
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <ng-container *ngFor="let item of myinfo">
+              <li nz-menu-item (click)="onMyinfoClick(item.path)">{{item.label}}</li>
+            </ng-container>
+            
+          </ul>
+        </nz-dropdown-menu>
+        <span class="menu_item last_right" *ngIf="!status" (click)="onItemClick('login')"> {{data.account?data.account:"登录"}}</span>
+      </nz-page-header-extra>
+    </nz-page-header>
+</div>

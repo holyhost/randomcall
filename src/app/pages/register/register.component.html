@@ -1,0 +1,60 @@
+<app-head></app-head>
+<div class="login_container">
+    <h2>注册</h2>
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            
+          <nz-form-control nzErrorTip="必填,至少4位,最长15位">
+            <nz-input-group >
+                <span style="color: red;font-weight: bold;">*</span>帐号
+              <input type="text" maxlength="15" nz-input formControlName="username" placeholder=" 请输入帐号" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="必填,至少4位,最长25位">
+            <nz-input-group>
+                <div class="gap"></div>
+                 <span style="color: red;font-weight: bold;">*</span>密码
+              <input type="password" maxlength="25" nz-input formControlName="password" placeholder=" 请输入密码" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="必填,两次密码需要相同">
+            <nz-input-group>
+                <div class="gap"></div>
+                <span style="color: red;font-weight: bold;">*</span>确认密码
+              <input type="password" maxlength="25" nz-input formControlName="password2" placeholder=" 请重复输入密码" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入正确邮箱">
+            <nz-input-group>
+                <div class="gap"></div>
+                绑定邮箱(选填)
+              <input type="email" maxlength="25" nz-input formControlName="email" placeholder=" 请输入邮箱账号" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="校验失败，请重新输入">
+            <nz-input-group>
+                <div class="gap"></div>
+                绑定微信(选填)
+              <input type="text" maxlength="20" nz-input formControlName="xgsid" placeholder=" 生活小怪兽给的id" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="validateForm.invalid && !isbtn">注册</button>
+        <nz-alert *ngIf="regSuccess" nzType="success" [nzMessage]="successmsg"></nz-alert>
+        <a ng *ngIf="regSuccess" [routerLink]="['/login']">注册成功，前往登录吧！</a>
+        
+      </form>
+
+</div>
+
+
+<app-footer></app-footer>

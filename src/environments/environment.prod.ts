@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
+  production: true,
   supportedLocale:['en-US','zh-CN']
 };

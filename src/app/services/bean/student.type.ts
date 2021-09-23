@@ -23,3 +23,23 @@ export class Student {
     }
 
 }
+
+export class StuBean {
+    public id:string;// 0,
+    public name:string;// "哥耍耍",
+    public birth:string;// null,
+    public curClass:string;// "高一三班",
+    public sex:string;// "男",
+    public icon:string;// null,
+    public qq:string;// null,
+    public wx:string;// null,
+    public stuno:string;// null,
+    public teaname:string;// "admin12"
+
+    constructor(name:string,className=''){
+        this.name = name
+        this.curClass = className
+
+    }
+
+}

@@ -8,3 +8,17 @@
     fill: currentColor;
     overflow: hidden;
 }
+
+.content_container{
+    width: 60%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 8rem;
+    margin: auto;
+}
+
+.top_little{
+    margin-top: .5rem;
+}

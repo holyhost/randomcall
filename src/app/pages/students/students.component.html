@@ -1,0 +1,40 @@
+<app-head></app-head>
+<div class="content_container">
+    <ng-container *ngIf="dataList && dataList.length>0">
+        <nz-collapse>
+            <nz-collapse-panel
+              *ngFor="let item of dataList"
+              [nzHeader]="item.name"
+              [nzActive]="false"
+              [nzDisabled]="false"
+            >
+            <nz-card >
+                <div nz-card-grid class="grid_item" *ngFor="let stu of item.stu">{{stu.name}}</div>
+            </nz-card>
+            </nz-collapse-panel>
+        </nz-collapse>
+
+    </ng-container>
+    
+
+    <div class="stu_area">
+        <h3 >添加学生信息</h3>
+        <textarea rows="4" nz-input [(ngModel)]="stuArea" placeholder="多个名字之间用逗号隔开,例如:张三,李四,王五,麻子"></textarea>
+        <br class="top1">
+        <p></p>
+        <nz-radio-group [(ngModel)]="radioValue" class="top_little">
+            <ng-container *ngIf="dataList && dataList.length>0">
+                <label nz-radio  *ngFor="let item of dataList;let i = index;" [nzValue]="'a'+i">{{item.name}}</label>
+            </ng-container>
+            
+            <label nz-radio nzValue="E">
+                <input class="new_class" nz-input placeholder="输入新班级名称" [(ngModel)]="newClassName" />
+            </label>
+        </nz-radio-group>
+        <br>
+        <button class="top_little" (click)="formatStuArea()" nz-button nzType="primary"  nzShape="round">添加</button>
+        <nz-alert *ngIf="formatResult ===1" nzType="success" nzMessage="添加成功" nzCloseable></nz-alert>
+        <nz-alert *ngIf="formatResult ===0" nzType="error" [nzMessage]="formatErrormsg" nzCloseable></nz-alert>
+    </div>
+    
+</div>
