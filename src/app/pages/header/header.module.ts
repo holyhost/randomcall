@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NgZorroAntdModule } from 'ng-zorro-antd/ng-zorro-antd.module';
 
 
 @NgModule({
@@ -13,7 +12,6 @@ import { NgZorroAntdModule } from 'ng-zorro-antd/ng-zorro-antd.module';
   imports: [
     CommonModule,
     TranslateModule,
-    NgZorroAntdModule,
     RouterModule,
     FormsModule,
     NzButtonModule

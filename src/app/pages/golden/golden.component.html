@@ -1,9 +1,10 @@
-<ng-container *ngIf="data.allData.length">
+<app-head></app-head>
+<div *ngIf="curStudents.length" class="page_container">
     <div class="container">
         <div class="choose">
             <nz-select [(ngModel)]="curClass" nzPlaceHolder="选择班级">
-                <ng-container *ngFor="let item of data.allData">
-                    <nz-option [nzValue]="item.className" [nzLabel]="item.className"></nz-option>
+                <ng-container *ngFor="let item of curStudents">
+                    <nz-option [nzValue]="item.name" [nzLabel]="item.name"></nz-option>
                 </ng-container>
             </nz-select>
         </div>
@@ -13,5 +14,4 @@
         <!-- <button nz-button nzType="primary" nzSize="large" nzShape="round" (click)="onStart()">&nbsp;&nbsp;{{btnText}} &nbsp; &nbsp;</button> -->
 
     </div>
-
-</ng-container>
+</div>

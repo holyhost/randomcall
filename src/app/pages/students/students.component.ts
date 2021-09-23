@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StuBean } from 'src/app/services/bean/student.type';
+import { ClasBean, StuBean } from 'src/app/services/bean/student.type';
 import { DataService } from 'src/app/services/data.service';
 
-type ClasBean = {
-  name:string,
-  stu: StuBean[]
-}
 
 @Component({
   selector: 'app-students',
@@ -56,8 +52,28 @@ export class StudentsComponent implements OnInit {
   formatStuArea(){
     console.log(this.stuArea)
     console.log(this.radioValue)
-    if(this.stuArea && this.stuArea.length>1 && this.stuArea.includes(',')){
-      let names = this.stuArea.split(",")
+    if(this.stuArea && this.stuArea.length>1){
+      let splitStr = '';
+      if(this.stuArea.includes(',')){
+        splitStr = ',';
+      }
+      if(this.stuArea.includes('，')){
+        splitStr = '，';
+      }
+      if(!splitStr && this.stuArea.length>8){
+        this.formatResult = 0;
+        this.formatErrormsg = '添加失败，名字最长8个字！';
+        return;
+      }else{
+
+      }
+      let names = [];
+      if(!splitStr){
+        names.push(this.stuArea)
+      }else{
+        names = this.stuArea.split(splitStr)
+      }
+       
       names = names.filter(item=>item&&item.trim().length>0)
       this.data.addStudents(this.getChoosedClass(),names).subscribe(res=>{
         if(res && res.status && res.status==='ok'){
@@ -65,6 +81,9 @@ export class StudentsComponent implements OnInit {
           this.stuArea = '';
           this.newClassName = '';
           this.initMyStudents();
+        }else{
+          this.formatErrormsg = res.msg;
+          this.formatResult = 0;
         }
       },err=>{
         console.log(err)

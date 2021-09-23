@@ -5,13 +5,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HeaderComponent } from './pages/header/header.component';
 import {TranslateModule,TranslateLoader,TranslateService} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
 import { HeadModule } from './pages/head/head.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 
 
@@ -29,13 +29,13 @@ export function LocaleIdFactory() {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    NgZorroAntdModule,
     AppRoutingModule,
     NzSpinModule,
     HeadModule,

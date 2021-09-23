@@ -6,6 +6,12 @@
     column-count: 3; /*css3新增，把contaner容器中的内容分为三列*/
     column-gap: 2rem; /*定义列之间的间隙为20px*/
     padding: 2rem 1rem;
+    
+}
+
+.content_container{
+    width: 80%;
+    
 }
 
 .gushi_item{
@@ -40,5 +46,39 @@
         letter-spacing: .22rem;
         color: black;
     }
+}
+
+
+@media (max-width: 850px) {
+
+    .container{
+        // display: flex;
+        // justify-content: space-around;
+        // flex-wrap: wrap;
+    
+        column-count: 2; /*css3新增，把contaner容器中的内容分为三列*/
+        column-gap: 2rem; /*定义列之间的间隙为20px*/
+        padding: 1rem 1rem;
+    }
+    .content_container{
+        width: 80%;
+    }
+
+}
+@media (max-width: 500px) {
+
+    .container{
+        // display: flex;
+        // justify-content: space-around;
+        // flex-wrap: wrap;
+    
+        column-count: 1; /*css3新增，把contaner容器中的内容分为三列*/
+        column-gap: 2rem; /*定义列之间的间隙为20px*/
+        padding: 1rem 1rem;
+    }
+    .content_container{
+        width: 98%;
+    }
+
 }
 

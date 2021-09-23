@@ -5,6 +5,7 @@ import { GoldenComponent } from './golden.component';
 import { GoldenRoutingModule } from './golden-routing.module';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { HeadModule } from '../head/head.module';
 
 @NgModule({
   declarations: [GoldenComponent],
@@ -13,6 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NgZorroAntdModule,
     TranslateModule,
     FormsModule,
+    HeadModule,
     GoldenRoutingModule
   ]
 })

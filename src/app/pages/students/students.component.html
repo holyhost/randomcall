@@ -1,6 +1,7 @@
 <app-head></app-head>
 <div class="content_container">
     <ng-container *ngIf="dataList && dataList.length>0">
+        <h3 >我的班级</h3>
         <nz-collapse>
             <nz-collapse-panel
               *ngFor="let item of dataList"
@@ -33,8 +34,9 @@
         </nz-radio-group>
         <br>
         <button class="top_little" (click)="formatStuArea()" nz-button nzType="primary"  nzShape="round">添加</button>
-        <nz-alert *ngIf="formatResult ===1" nzType="success" nzMessage="添加成功" nzCloseable></nz-alert>
-        <nz-alert *ngIf="formatResult ===0" nzType="error" [nzMessage]="formatErrormsg" nzCloseable></nz-alert>
+        <nz-alert class="top_little" *ngIf="formatResult ===1" nzType="success" nzMessage="添加成功" nzCloseable></nz-alert>
+        <nz-alert class="top_little" *ngIf="formatResult ===0" nzType="error" [nzMessage]="formatErrormsg" nzCloseable></nz-alert>
     </div>
-    
+    <div style="height: 8rem;"></div>
+    <div style="height:1px; margin-top:-1px;clear: both;overflow:hidden;"></div>  
 </div>

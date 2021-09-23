@@ -2,7 +2,7 @@
 .app-container{
     width: 100%;
     min-height: 600px;
-    height: 100%;
+    // height: 100%;
     background-color: gray;//后面设置可以动态改变
     // display: flex;
     // justify-content: center;
@@ -30,7 +30,7 @@
 
     .app-container{
         width: 100%;
-        height: 100%;
+        // height: 100%;
         // display: block;
         display: flex;
         flex-direction: column;

@@ -43,3 +43,9 @@ export class StuBean {
     }
 
 }
+
+export class ClasBean {
+    public name:string
+    public stu: StuBean[]
+    
+  }

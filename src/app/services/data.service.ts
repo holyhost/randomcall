@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, timer } from 'rxjs';
+import { Observable, of, timer } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/internal/operators';
 import { Config } from './bean/config.constant';
 import { Student } from './bean/student.type';
@@ -185,6 +185,12 @@ export class DataService {
   }
 
   addStudents(clazname:string,stus: string[]){
+    if(!this.account || !this.pwd){
+      return of({
+        status:'error',
+        msg: '请重新登录'
+      })
+    }
     this.isLoading = true;
     let params = {
       "teaname":this.account,
