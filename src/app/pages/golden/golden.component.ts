@@ -2,6 +2,9 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ClasBean, StuBean } from 'src/app/services/bean/student.type';
 import { DataService } from 'src/app/services/data.service';
 
+/**
+ * 点名组件
+ */
 @Component({
   selector: 'app-golden',
   templateUrl: './golden.component.html',
@@ -14,8 +17,9 @@ export class GoldenComponent implements OnInit,AfterViewInit {
   state = 0;//定义状态，开始和结束
   t:any;
   tout:any
-  btnText: string = '开始';
+  // btnText: string = '开始';
   luckyName: string = '随机点名';
+  luckyStu: StuBean = null;
 
   constructor(public data:DataService) { }
 
@@ -44,19 +48,20 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         // console.log(1);
         var sj = Math.round(Math.random() * (arr.length - 1));
         this.luckyName = arr[sj].name;
+        this.luckyStu = arr[sj]
       }, 37)
-      this.btnText = "结束"//更改按钮的内容
+      // this.btnText = "结束"//更改按钮的内容
       this.state=1;
       this.tout = setTimeout(() => {
         this.state=0;
         clearInterval(this.t);
-        this.btnText = '开始'
+        // this.btnText = '开始'
       }, this.data.randomTime*1000+Math.round(Math.random() * 1000));
 
     }else{
       this.state=0;
       clearInterval(this.t);
-      this.btnText = '开始'
+      // this.btnText = '开始'
     }
 
   }
@@ -87,5 +92,9 @@ export class GoldenComponent implements OnInit,AfterViewInit {
     })
   }
 
+
+  updateScore(){
+
+  }
 
 }

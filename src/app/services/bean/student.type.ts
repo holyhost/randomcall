@@ -35,6 +35,7 @@ export class StuBean {
     public wx:string;// null,
     public stuno:string;// null,
     public teaname:string;// "admin12"
+    public score:number;// 分数
 
     constructor(name:string,className=''){
         this.name = name

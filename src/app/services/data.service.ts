@@ -55,6 +55,10 @@ export class DataService {
     
   }
 
+  getLoading():Observable<Boolean>{
+    return of(this.isLoading)
+  }
+
   /**
    * 从assets文件中获取基础配置数据
    * @returns 所有班级数据

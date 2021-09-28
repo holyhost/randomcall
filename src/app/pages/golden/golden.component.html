@@ -2,6 +2,7 @@
 <div *ngIf="curStudents.length" class="page_container">
     <div class="container">
         <div class="choose">
+            <span *ngIf="luckyStu">总分：{{luckyStu.score}}，加分-减分</span>
             <nz-select [(ngModel)]="curClass" nzPlaceHolder="选择班级">
                 <ng-container *ngFor="let item of curStudents">
                     <nz-option [nzValue]="item.name" [nzLabel]="item.name"></nz-option>
