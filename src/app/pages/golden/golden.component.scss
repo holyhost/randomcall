@@ -13,6 +13,15 @@
     margin-bottom: 10rem;
 }
 
+.ant-btn-primary{
+    background-color: #17B794;
+    border-color: #17B794;
+}
+
+.mr1{
+    margin-right: 1rem;
+}
+
 .page_container{
     height: 100%;
 }
@@ -26,6 +35,13 @@
 
 nz-select {
     width: 9rem;
+}
+.emptymsg{
+    text-align: center;
+}
+.amsg{
+    margin-top: 2rem;
+    color: #17B794;
 }
 
 #lucky {
@@ -43,12 +59,13 @@ nz-select {
     border-radius: 10px;
 	margin-top: 11rem;
   }
-  span {
+
+  .name{
 	display: block;
     color: #ded428;
     text-align: center;
     font-size: 9.8rem;
-    font-family: "Rig Bold Inline", sans-serif;
+    // font-family: "Rig Bold Inline", sans-serif;
 	text-shadow: 7px 7px 4px #636363;
     -webkit-text-stroke: 0.1px black;
     letter-spacing: -2.5rem;
@@ -97,7 +114,7 @@ nz-select {
         margin-top: 8rem;
     }
 
-    span {
+    .name {
         display: block;
         color: #ded428;
         text-align: center;
@@ -127,7 +144,7 @@ nz-select {
     }
 
 
-    span {
+    .name {
         display: block;
         color: #ded428;
         text-align: center;
@@ -157,7 +174,7 @@ nz-select {
         margin-top: 1.5rem;
     }
 
-    span {
+    .name {
         display: block;
         color: #ded428;
         text-align: center;
@@ -198,7 +215,7 @@ nz-select {
 	    padding: 1rem 1rem;
     }
 
-    span {
+    .name {
         display: block;
         color: #ded428;
         text-align: center;

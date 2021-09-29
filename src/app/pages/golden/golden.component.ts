@@ -49,6 +49,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         var sj = Math.round(Math.random() * (arr.length - 1));
         this.luckyName = arr[sj].name;
         this.luckyStu = arr[sj]
+        console.log(this.luckyStu.score)
       }, 37)
       // this.btnText = "结束"//更改按钮的内容
       this.state=1;
@@ -75,13 +76,15 @@ export class GoldenComponent implements OnInit,AfterViewInit {
     
       if(res && res.status && res.status ==='ok'){
         let temArr: StuBean[] = res.data;
-        temArr.forEach(stu=>{
+        temArr.forEach((stu)=>{
           let tempFind = this.curStudents.find(item=>item &&(item.name === stu.curClass));
+          stu.id = Number.parseInt(stu.id+"");
+          stu.score = Number.parseInt(stu.score+"");
           if(tempFind){
-            tempFind.stu.push(new StuBean(stu.name,stu.curClass))
+            tempFind.stu.push(stu)
           }else{
             let legth = this.curStudents.push({name: stu.curClass,stu: []})
-            this.curStudents[legth-1].stu.push(new StuBean(stu.name,stu.curClass))
+            this.curStudents[legth-1].stu.push(stu)
             this.curClass = stu.curClass;
           }
         })
@@ -92,9 +95,30 @@ export class GoldenComponent implements OnInit,AfterViewInit {
     })
   }
 
+  /**
+   * 每次切换班级，学生信息重置
+   * @param res 班级信息
+   */
+  onClassChange(res){
+    this.luckyStu = null
+  }
 
-  updateScore(){
 
+  updateScore(score=0){
+    console.log(this.luckyStu)
+    this.data.updateScore(this.luckyStu.id,score,1).subscribe(res=>{
+      if(res && res.status && res.status==='ok'){
+        this.luckyStu.score = this.luckyStu.score + score;
+        
+      }else{
+        //show error
+        this.data.showMessage(res&&res.msg?res.msg:"修改分数失败")
+      }
+    },err=>{
+      console.log(err)
+      this.data.showMessage("修改分数失败")
+      //show error
+    });
   }
 
 }

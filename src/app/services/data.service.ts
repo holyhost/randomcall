@@ -7,6 +7,7 @@ import { catchError, map, timeout } from 'rxjs/internal/operators';
 import { Config } from './bean/config.constant';
 import { Student } from './bean/student.type';
 import { environment } from 'src/environments/environment';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 type AllClass = {
   id: number,
@@ -30,7 +31,9 @@ export class DataService {
   constructor(
     public http: HttpClient,
     private i18n: TranslateService,
+    private message: NzMessageService
   ) { 
+    console.log("0--")
     if(!environment.production){
       this.proxy = "xampp/"
     }
@@ -133,7 +136,7 @@ export class DataService {
     this.isLoading = true;
     let dat = new Date();
     params.morep1 = this.randomString(dat.getMinutes()%5+4);
-    params.morep2 = this.randomString(dat.getMinutes()%6+3);
+    params.morep2 = this.randomString(dat.getMinutes()%6+4);
     console.log(params)
     return this.http.post(this.proxy+"api/v1/user/login.php",params).pipe(
       map(data=>{
@@ -251,5 +254,25 @@ export class DataService {
         
       }
     }
+  }
+
+  updateScore(sid:number,score:number,type=1){
+    let params = {
+        "teaname": this.account,
+        "stuid": sid,
+        "type": type,
+        "token": this.pwd,
+        "score": score
+    }
+    return this.http.post(this.proxy+"api/v1/student/score.php",params).pipe(
+      map((data:any)=>{
+        this.isLoading = false
+        return data;
+      })
+    )
+  }
+
+  showMessage(text:string = ''){
+    this.message.info(text);
   }
 }

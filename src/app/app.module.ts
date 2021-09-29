@@ -12,7 +12,7 @@ import { HeadModule } from './pages/head/head.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 
 export function TranslateLoaderFactory(http: HttpClient) {
@@ -39,6 +39,7 @@ export function LocaleIdFactory() {
     AppRoutingModule,
     NzSpinModule,
     HeadModule,
+    NzMessageModule,
     TranslateModule.forRoot({//配置i18n
       loader: {
           provide: TranslateLoader,

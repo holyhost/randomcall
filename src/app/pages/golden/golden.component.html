@@ -2,8 +2,19 @@
 <div *ngIf="curStudents.length" class="page_container">
     <div class="container">
         <div class="choose">
-            <span *ngIf="luckyStu">总分：{{luckyStu.score}}，加分-减分</span>
-            <nz-select [(ngModel)]="curClass" nzPlaceHolder="选择班级">
+            <span *ngIf="luckyStu">
+                <button class="mr1" nz-button nzType="primary"  nzShape="round">
+                    {{luckyStu.name}}总分：{{luckyStu.score}}
+                </button>
+                
+                <button class="mr1" nz-button nzType="primary"  nzShape="round" (click)="updateScore(1)">
+                    +加分
+                </button>
+                <button class="mr1" nz-button nzType="primary"  nzShape="round" (click)="updateScore(-1)">
+                    -减分
+                </button>
+            </span>
+            <nz-select [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" nzPlaceHolder="选择班级">
                 <ng-container *ngFor="let item of curStudents">
                     <nz-option [nzValue]="item.name" [nzLabel]="item.name"></nz-option>
                 </ng-container>
@@ -15,4 +26,8 @@
         <!-- <button nz-button nzType="primary" nzSize="large" nzShape="round" (click)="onStart()">&nbsp;&nbsp;{{btnText}} &nbsp; &nbsp;</button> -->
 
     </div>
+</div>
+<div *ngIf="!curStudents || curStudents.length<1" class="emptymsg">
+    <a class="amsg" [routerLink]="['/students']" routerLinkActive="router-link-active">请先添加您的班级学生信息></a>
+    
 </div>

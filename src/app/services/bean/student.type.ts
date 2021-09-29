@@ -25,7 +25,7 @@ export class Student {
 }
 
 export class StuBean {
-    public id:string;// 0,
+    public id:number;// 0,
     public name:string;// "哥耍耍",
     public birth:string;// null,
     public curClass:string;// "高一三班",
@@ -37,10 +37,10 @@ export class StuBean {
     public teaname:string;// "admin12"
     public score:number;// 分数
 
-    constructor(name:string,className=''){
+    constructor(name:string,className='',score=0){
         this.name = name
         this.curClass = className
-
+        this.score = score;
     }
 
 }
