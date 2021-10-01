@@ -33,7 +33,7 @@ export class DataService {
     private i18n: TranslateService,
     private message: NzMessageService
   ) { 
-    console.log("0--")
+    
     if(!environment.production){
       this.proxy = "xampp/"
     }
@@ -60,6 +60,25 @@ export class DataService {
 
   getLoading():Observable<Boolean>{
     return of(this.isLoading)
+  }
+
+  checkUserStatus(){
+    this.isLoading = true;
+
+    let params = {
+      "username":this.account,
+      "pwd":this.pwd,
+      "userkey": this.randomString(9)
+    }
+    console.log(params)
+    return this.http.post(this.proxy+"api/v1/user/check.php",params).pipe(
+      map(data=>{
+        console.log(typeof(data))
+        console.log(data)
+        this.isLoading = false
+        return data;
+      })
+    )
   }
 
   /**
@@ -272,7 +291,27 @@ export class DataService {
     )
   }
 
+  updateStuInfo(sid:number,data:any,type=1){
+    let params = {
+        "teaname": this.account,
+        "stuid": sid,
+        "type": type,
+        "token": this.pwd,
+        "sex": type==2?data:null,
+        "sname": type==1?data:null,
+    }
+    return this.http.post(this.proxy+"api/v1/student/update.php",params).pipe(
+      map((data:any)=>{
+        this.isLoading = false
+        return data;
+      })
+    )
+  }
+
   showMessage(text:string = ''){
-    this.message.info(text);
+    this.message.success(text);
+  }
+  showMessageError(text:string = ''){
+    this.message.error(text);
   }
 }

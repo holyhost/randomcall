@@ -78,7 +78,6 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         let temArr: StuBean[] = res.data;
         temArr.forEach((stu)=>{
           let tempFind = this.curStudents.find(item=>item &&(item.name === stu.curClass));
-          stu.id = Number.parseInt(stu.id+"");
           stu.score = Number.parseInt(stu.score+"");
           if(tempFind){
             tempFind.stu.push(stu)
@@ -106,7 +105,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
 
   updateScore(score=0){
     console.log(this.luckyStu)
-    this.data.updateScore(this.luckyStu.id,score,1).subscribe(res=>{
+    this.data.updateScore(Number.parseInt(this.luckyStu.id+""),score,1).subscribe(res=>{
       if(res && res.status && res.status==='ok'){
         this.luckyStu.score = this.luckyStu.score + score;
         

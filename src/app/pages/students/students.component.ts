@@ -16,6 +16,7 @@ export class StudentsComponent implements OnInit {
   dataList: ClasBean [] = [];
   formatResult = -1;
   formatErrormsg = '格式化数据有误';
+  classStatus: any[]= [];
 
   constructor(
     private data: DataService
@@ -34,18 +35,26 @@ export class StudentsComponent implements OnInit {
         let temArr: StuBean[] = res.data;
         temArr.forEach(stu=>{
           let tempFind = this.dataList.find(item=>item &&(item.name === stu.curClass));
+          this.classStatus.push({"detail": false})
           if(tempFind){
-            tempFind.stu.push(new StuBean(stu.name,stu.curClass))
+            tempFind.stu.push(stu)
           }else{
             let legth = this.dataList.push({name: stu.curClass,stu: []})
-            this.dataList[legth-1].stu.push(new StuBean(stu.name,stu.curClass))
+            this.dataList[legth-1].stu.push(stu)
           }
         })
+        console.log(this.dataList)
       }
     },err=>{
       console.log(err)
       this.data.isLoading = false;
     })
+  }
+
+  onClassCollapseChange(status,index:number){
+
+    console.log(status)
+    console.log(index)
   }
 
 
@@ -101,6 +110,52 @@ export class StudentsComponent implements OnInit {
     }else{
       return this.dataList[Number.parseInt(this.radioValue.replace('a',''))].name
     }
+  }
+
+  i = 0;
+  editId: string | null = null;
+  tempName= "";
+  startEdit(id: string,name:string): void {
+    this.editId = id;
+    this.tempName = name;
+    setTimeout(() => {
+      document.getElementById("input_"+id).focus();
+    }, 300);
+    
+  }
+
+  stopEdit(id: string,name: string): void {
+    console.log("stop-edit")
+    this.editId = null;
+    if(this.tempName === name){
+      console.log("名字没有变化")
+      return;
+    }
+    
+    //保存数据
+    this.data.updateStuInfo(Number.parseInt(id),name,1).subscribe(res=>{
+      if(res && res.status && res.status==='ok'){
+        this.data.showMessage("更新名称成功！")
+      }else{
+        this.data.showMessageError("更新名字失败！")
+      }
+    },err=>{
+      console.log(err)
+      this.data.showMessageError("更新名字失败！")
+    })
+  }
+
+  addRow(): void {
+
+  }
+
+  deleteRow(id: string): void {
+    console.log(id)
+    
+  }
+
+  onDetailClick(index:number){
+    this.classStatus[index].detail = !this.classStatus[index].detail
   }
 
 }

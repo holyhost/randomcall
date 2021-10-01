@@ -25,7 +25,7 @@ export class Student {
 }
 
 export class StuBean {
-    public id:number;// 0,
+    public id:string;// 0,
     public name:string;// "哥耍耍",
     public birth:string;// null,
     public curClass:string;// "高一三班",
@@ -48,5 +48,4 @@ export class StuBean {
 export class ClasBean {
     public name:string
     public stu: StuBean[]
-    
   }

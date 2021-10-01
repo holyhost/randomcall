@@ -17,7 +17,19 @@ export class AppComponent {
   ]
   
   constructor(public data:DataService,public theme: ThemeService){
-    
+    this.data.checkUserStatus().subscribe((res:any)=>{
+      if(res && res.status && res.status ==='ok'){
+          //验证无问题
+      }else{
+        this.data.account = "";
+        this.data.pwd= '';
+      }
+      
+    },err=>{
+      console.log(err)
+      this.data.account = "";
+      this.data.pwd= '';
+    })
   }
   
 }

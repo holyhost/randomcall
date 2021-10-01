@@ -11,6 +11,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { StudentsComponent } from './students.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   declarations: [StudentsComponent],
@@ -20,6 +21,7 @@ import { NzCollapseModule } from 'ng-zorro-antd/collapse';
     StudentsRoutingModule,
     TranslateModule,
     FormsModule,
+    NzTableModule,
     ReactiveFormsModule,
     FooterModule,
     HeadModule,
