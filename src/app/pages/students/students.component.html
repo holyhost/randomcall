@@ -10,8 +10,8 @@
               [nzDisabled]="false"
               (nzActiveChange)="onClassCollapseChange($event,i)"
             >
-            <button *ngIf="!classStatus[i].detail"  (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzShape="round">管理数据</button>
-            <button *ngIf="classStatus[i].detail" (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzShape="round">查看名单</button>
+            <button *ngIf="!classStatus[i].detail"  (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">管理数据</button>
+            <button *ngIf="classStatus[i].detail" (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">查看名单</button>
 
             <nz-card *ngIf="!classStatus[i].detail">
                 <div nz-card-grid class="grid_item" *ngFor="let stu of item.stu">{{stu.name}}</div>
@@ -31,12 +31,22 @@
                       <div class="editable-cell" [hidden]="editId === sss.id" (click)="startEdit(sss.id,sss.name)">
                         {{ sss.name }}
                       </div>
-                      <input [id]="'input_'+sss.id" [hidden]="editId !== sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.name" (blur)="stopEdit(sss.id,sss.name)" />
+                      <input [id]="'input_name_'+sss.id" [hidden]="editId !== sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.name" (blur)="stopEdit(sss.id,sss.name)" />
                     </td>
-                    <td>{{sss.sex}}</td>
-                    <td>{{sss.score}}</td>
                     <td>
-                      <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(sss.id)">删除</a>
+                      <div class="editable-cell" [hidden]="editSex === 'input_sex_'+sss.id" (click)="startEditSex(sss.id,sss.sex)">
+                        {{sss.sex}}
+                      </div>
+                      <input [id]="'input_sex_'+sss.id" [hidden]="editSex !== 'input_sex_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.sex" (blur)="stopEditSex(sss.id,sss.sex)" />
+                    </td>
+                    <td>
+                      <div class="editable-cell" [hidden]="editScore === 'input_score_'+sss.id" (click)="startEditScore(sss.id,sss.score)">
+                        {{sss.score}}
+                      </div>
+                      <input [id]="'input_score_'+sss.id" [hidden]="editScore !== 'input_score_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.score" (blur)="stopEditScore(sss.id,sss.score)" />
+                    </td>
+                    <td>
+                      <a nz-popconfirm nzPopconfirmTitle="确定删除?" (nzOnConfirm)="deleteRow(i,sss.id)">删除</a>
                     </td>
                   </tr>
                 </tbody>

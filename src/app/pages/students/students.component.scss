@@ -1,6 +1,6 @@
 
 
-$main_color : "#17B794";
+$main_color : #17B794;
 .new_class{
     width: 8rem;
 }
@@ -25,3 +25,27 @@ $main_color : "#17B794";
     margin-top: -12px;
     margin-bottom: 6px;
 }
+
+.ant-btn-primary{
+    background-color: $main_color;
+    border-color: $main_color;
+}
+.ant-radio-input:checked{
+    background-color: $main_color !important;
+}
+.ant-radio-checked .ant-radio-inner {
+    border-color: $main_color  !important;
+}
+.ant-radio-inner{
+    background-color: $main_color !important;
+}
+.ant-radio-inner:after{
+    background-color: $main_color !important;
+}
+a{
+    color: $main_color !important;
+}
+.ant-pagination-item-active{
+    border-color: $main_color;
+}
+

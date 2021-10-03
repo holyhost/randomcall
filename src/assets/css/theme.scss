@@ -26,7 +26,8 @@
     // theme5_main
     :host-context([theme-style='theme5']) & {
         color: $theme5_color;
-        background-color: $theme5_main;
+        background-color: #faad148a;
+        background-image: linear-gradient(180deg, #f7e674 0%, #f96e2c 100%);
     }
     // theme6_main
     :host-context([theme-style='theme6']) & {

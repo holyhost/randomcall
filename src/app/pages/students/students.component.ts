@@ -17,6 +17,12 @@ export class StudentsComponent implements OnInit {
   formatResult = -1;
   formatErrormsg = '格式化数据有误';
   classStatus: any[]= [];
+  editId: string | null = null;
+  tempName= "";
+  editSex: string | null = null;
+  tempSex: string = '';
+  editScore: string | null = null;
+  tempScore: string = '';
 
   constructor(
     private data: DataService
@@ -112,14 +118,28 @@ export class StudentsComponent implements OnInit {
     }
   }
 
-  i = 0;
-  editId: string | null = null;
-  tempName= "";
+
   startEdit(id: string,name:string): void {
     this.editId = id;
     this.tempName = name;
     setTimeout(() => {
-      document.getElementById("input_"+id).focus();
+      document.getElementById("input_name_"+id).focus();
+    }, 300);
+    
+  }
+  startEditSex(id: string,sex:string): void {
+    this.editSex = 'input_sex_'+id
+    this.tempSex = sex;
+    setTimeout(() => {
+      document.getElementById("input_sex_"+id).focus();
+    }, 300);
+    
+  }
+  startEditScore(id: string,score:string): void {
+    this.editScore = 'input_score_'+id
+    this.tempScore = score;
+    setTimeout(() => {
+      document.getElementById("input_score_"+id).focus();
     }, 300);
     
   }
@@ -127,7 +147,7 @@ export class StudentsComponent implements OnInit {
   stopEdit(id: string,name: string): void {
     console.log("stop-edit")
     this.editId = null;
-    if(this.tempName === name){
+    if(this.tempName === name || this.tempName.length<1){
       console.log("名字没有变化")
       return;
     }
@@ -144,13 +164,66 @@ export class StudentsComponent implements OnInit {
       this.data.showMessageError("更新名字失败！")
     })
   }
+  stopEditSex(id: string,sex: string): void {
+    console.log("stop-edit")
+    this.editSex = null;
+    if(this.tempSex === sex || this.tempSex.length<1){
+      
+      return;
+    }
+    
+    //保存数据
+    this.data.updateStuInfo(Number.parseInt(id),sex,2).subscribe(res=>{
+      if(res && res.status && res.status==='ok'){
+        this.data.showMessage("更新性别成功！")
+      }else{
+        this.data.showMessageError("更新性别失败！")
+      }
+    },err=>{
+      console.log(err)
+      this.data.showMessageError("更新性别失败！")
+    })
+  }
+  stopEditScore(id: string,score: string): void {
+    console.log("stop-edit")
+    this.editScore = null;
+    if(this.tempScore === score || this.tempScore.length<1){
+      
+      return;
+    }
+    
+    //保存数据
+    this.data.updateScore(Number.parseInt(id),Number.parseInt(score),3).subscribe(res=>{
+      if(res && res.status && res.status==='ok'){
+        this.data.showMessage("更新分数成功！")
+      }else{
+        this.data.showMessageError("更新分数失败！")
+      }
+    },err=>{
+      console.log(err)
+      this.data.showMessageError("更新分数失败！")
+    })
+  }
 
   addRow(): void {
 
   }
 
-  deleteRow(id: string): void {
-    console.log(id)
+  deleteRow(i:number,id: string): void {
+    
+    //删除
+    this.data.updateStuInfo(Number.parseInt(id),'',4).subscribe(res=>{
+      if(res && res.status && res.status==='ok'){
+        this.data.showMessage("删除成功！")
+        this.dataList[i].stu = this.dataList[i].stu.filter(d => d.id !== id);
+        this.dataList[i].stu.forEach((item,index)=>item.id===id&&this.dataList[i].stu.splice(index,1))
+      }else{
+        this.data.showMessageError("删除失败！")
+      }
+    },err=>{
+      console.log(err)
+      this.data.showMessageError("删除失败！")
+    })
     
   }
 
