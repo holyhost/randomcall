@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, timer } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/internal/operators';
 import { Config } from './bean/config.constant';
-import { Student } from './bean/student.type';
+import { StuBean, Student } from './bean/student.type';
 import { environment } from 'src/environments/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -26,7 +26,8 @@ export class DataService {
   proxy = "";
   isLoading: boolean = true
   allData: AllClass[] = []//所有班级及学生数据
-  randomTime: number = 5;
+  randomTime: number = 5;//随机时间
+  randomType: string = "C"
   language=''
   constructor(
     public http: HttpClient,
@@ -42,11 +43,15 @@ export class DataService {
     if(time){
       this.randomTime = Number.parseFloat(time)
     }
+    let tempType = this.getItem(Config.RandomType)
+    if(tempType){
+      this.randomType = tempType;
+    }
     this.readUserStatus();
-    this.initPersonData().subscribe(res=>{
-      this.allData = res
-      this.delayShow(1888)
-    })
+    // this.initPersonData().subscribe(res=>{
+    //   this.allData = res
+    //   this.delayShow(1888)
+    // })
 
     let lan = this.getItem(Config.Language)
     if(lan){
@@ -70,11 +75,8 @@ export class DataService {
       "pwd":this.pwd,
       "userkey": this.randomString(9)
     }
-    console.log(params)
     return this.http.post(this.proxy+"api/v1/user/check.php",params).pipe(
       map(data=>{
-        console.log(typeof(data))
-        console.log(data)
         this.isLoading = false
         return data;
       })
@@ -156,11 +158,9 @@ export class DataService {
     let dat = new Date();
     params.morep1 = this.randomString(dat.getMinutes()%5+4);
     params.morep2 = this.randomString(dat.getMinutes()%6+4);
-    console.log(params)
+
     return this.http.post(this.proxy+"api/v1/user/login.php",params).pipe(
       map(data=>{
-        console.log(typeof(data))
-        console.log(data)
         this.isLoading = false
         return data;
       })
@@ -170,8 +170,7 @@ export class DataService {
     this.isLoading = true;
     return this.http.post(this.proxy+"api/v1/user/register.php",params).pipe(
       map(data=>{
-        console.log(typeof(data))
-        console.log(data)
+
         this.isLoading = false
         return data;
       })
@@ -262,13 +261,10 @@ export class DataService {
     // console.log(info)
     if(info){
       let result = info.split("_123_")
-      console.log(1)
       if(result && result.length == 3){
-        console.log(result[2])
         if(result[2]&&(Number.parseInt(result[2])-new Date().getTime())<10*24*60*60*1000){
           this.account = result[0]
           this.pwd = result[1]
-          console.log(3)
         }
         
       }
@@ -313,5 +309,33 @@ export class DataService {
   }
   showMessageError(text:string = ''){
     this.message.error(text);
+  }
+
+  getCallRecord(clazname:string){
+    return this.getItem(this.account+"_"+clazname);
+  }
+  setCallRecord(data:string,clazname){
+    this.setItem(this.account+"_"+clazname,data);
+  }
+
+  initCallData(stuArr:StuBean[],clazname:string){
+    let his = this.getCallRecord(clazname);
+    if(!his || his.length<2){
+      return stuArr;
+    }
+    let tempArr:StuBean[] = [];
+    let spArr=his.split("_");
+    if(spArr.length>stuArr.length*0.8){
+      this.setCallRecord('',clazname);
+      return stuArr;
+    }
+    for (let index = 0; index < stuArr.length; index++) {
+      const element = stuArr[index];
+      if(his.indexOf(element.name)<0){
+        tempArr.push(element);
+      }
+    }
+  
+    return tempArr;
   }
 }

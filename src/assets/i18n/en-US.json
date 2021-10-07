@@ -6,6 +6,7 @@
     "item_bg":"Background",
     "item_random_time":"Random Time",
     "item_second":"s",
+    "item_random_modle":"Random Type",
     "item_cache":"Cache",
     "title_update_stu_info":"Update student information",
     "title_update_theme":"Update Theme",
@@ -18,5 +19,6 @@
     "message_random_time":"Set the random and auto stop time",
     "message_load_data":"Loading data",
     "message_choose_class":"Choose Class",
+    "message_random_modle":"choose different random type",
     "title_update_":"Cache"
 }

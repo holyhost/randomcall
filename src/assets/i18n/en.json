@@ -7,6 +7,7 @@
     "item_random_time":"Random Time",
     "item_second":"s",
     "item_cache":"Cache",
+    "item_random_modle":"Random Call Type",
     "title_update_stu_info":"Update student information",
     "title_update_theme":"Update Theme",
     "title_tea_tip":"Give developer a cup of tea",
@@ -17,6 +18,7 @@
     "message_issue_feedback":"Pls email developer the details about issues: zx9797997@163.com.",
     "message_random_time":"Set the random and auto stop time",
     "message_load_data":"Loading data",
+    "message_random_modle":"choose different random call type",
     "message_choose_class":"Choose Class",
     "title_update_":"Cache"
 }

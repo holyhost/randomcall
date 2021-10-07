@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeadModule } from '../head/head.module';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @NgModule({
   declarations: [SettingComponent],
@@ -21,6 +22,7 @@ import { HeadModule } from '../head/head.module';
     FormsModule,
     NzButtonModule,
     NzMessageModule,
+    NzRadioModule,
     NzInputModule,
     HeadModule,
     NzListModule

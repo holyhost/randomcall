@@ -71,5 +71,21 @@
           </div>
           
         </nz-list-item>
+        <nz-list-item  style="background: white;">
+
+          <nz-list-item-meta
+            [nzTitle] = "'item_random_modle' | translate"
+            [nzDescription]="'message_random_modle' | translate"
+          >
+          </nz-list-item-meta>
+          <div class="random_type">
+            <nz-radio-group [(ngModel)]="randomType" (ngModelChange)="onRandomTypeChange($event)">
+              <label nz-radio nzValue="A">全部随机点名</label>
+              <label nz-radio nzValue="B">得分高的不点</label>
+              <label nz-radio nzValue="C">点过的不点</label>
+            </nz-radio-group>
+          </div>
+          
+        </nz-list-item>
       </nz-list>
 </div>

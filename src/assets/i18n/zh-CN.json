@@ -7,6 +7,7 @@
     "item_random_time":"随机时间",
     "item_second":"秒",
     "item_cache":"缓存",
+    "item_random_modle":"点名随机类型",
     "title_update_stu_info":"修改学生信息",
     "title_update_theme":"更换主题",
     "title_tea_tip":"请作者喝茶",
@@ -17,6 +18,7 @@
     "message_issue_feedback":"请发送相关问题，及详细描述信息到邮箱: zx9797997@163.com",
     "message_random_time":"设置随机点名中自动暂停所需时间",
     "message_load_data":"加载数据中",
+    "message_random_modle":"选择不同点名随机类型",
     "message_choose_class":"选择班级",
     "title_update_":"Cache"
 }

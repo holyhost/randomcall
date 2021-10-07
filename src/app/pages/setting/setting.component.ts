@@ -12,6 +12,12 @@ import { ThemeService } from 'src/app/services/theme.service';
 export class SettingComponent implements OnInit,OnDestroy {
 
   randomTime: number = 0
+  randomType: string = 'A';
+  myinfo: any[] = [
+    {label:'我的学生',name:'my_students',icon:'#icon-dianmingicon-32',path:'/students'},
+    {label:'我的信息',name:'my_info',icon:'#icon-xitong-copy',path:'/myinfo'},
+    {label:'退出登录',name:'my_out',icon:'#icon-bangzhu',path:''},
+  ]
 
   constructor(
     public theme: ThemeService,
@@ -19,6 +25,7 @@ export class SettingComponent implements OnInit,OnDestroy {
     private message: NzMessageService
   ) { 
     this.randomTime = this.data.randomTime
+    this.randomType = this.data.randomType
   }
 
   ngOnInit() {
@@ -52,5 +59,18 @@ export class SettingComponent implements OnInit,OnDestroy {
 
   onLanguageChange(language: string){
     this.data.changeLanguage(language)
+  }
+
+  onMyinfoClick(path:string){
+    if(path){
+      // this.router.navigateByUrl(path);
+    }else{
+      // this.logout()
+    }
+  }
+
+  onRandomTypeChange(type:string){
+    this.data.randomType = type;
+    this.data.setItem(Config.RandomType,type);
   }
 }

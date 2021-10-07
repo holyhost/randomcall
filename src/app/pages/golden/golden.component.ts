@@ -39,7 +39,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
     if(!choosedClass || choosedClass.stu.length<1){
       return
     }
-    let arr = choosedClass.stu
+    let arr = this.filterData(choosedClass.stu,this.data.randomType)
     clearTimeout(this.tout)
     if (this.state == 0) {
       //如果是0即开始随机，变为1时结束，不是0时执行else
@@ -49,7 +49,6 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         var sj = Math.round(Math.random() * (arr.length - 1));
         this.luckyName = arr[sj].name;
         this.luckyStu = arr[sj]
-        console.log(this.luckyStu.score)
       }, 37)
       // this.btnText = "结束"//更改按钮的内容
       this.state=1;
@@ -57,12 +56,18 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         this.state=0;
         clearInterval(this.t);
         // this.btnText = '开始'
+        if(this.data.randomType === "C"){
+          this.data.setCallRecord(this.data.getCallRecord(this.curClass)+"_"+this.luckyName,this.curClass);
+        }
       }, this.data.randomTime*1000+Math.round(Math.random() * 1000));
 
     }else{
       this.state=0;
       clearInterval(this.t);
       // this.btnText = '开始'
+      if(this.data.randomType === "C"){
+        this.data.setCallRecord(this.data.getCallRecord(this.curClass)+"_"+this.luckyName,this.curClass);
+      }
     }
 
   }
@@ -119,5 +124,41 @@ export class GoldenComponent implements OnInit,AfterViewInit {
       //show error
     });
   }
+
+  
+  filterData(arr:StuBean[],type:string){
+    if(!arr || arr.length<1){
+      return arr;
+    }
+    let total = 0
+    arr.map(item=>total+=item.score)
+    let avg = total/arr.length;
+
+    switch (type) {
+      case "A":
+        
+        break;
+      case "B":
+        let tempArr:StuBean[] = [];
+        arr.map(item=>{
+          if(item.score<avg){
+            tempArr.push(item)
+          }
+        })
+        if(tempArr.length<arr.length*0.85){
+          arr = tempArr
+        }
+        break;
+      case "C":
+        arr = this.data.initCallData(arr,this.curClass);
+        break;
+    
+      default:
+        break;
+    }
+
+    return arr
+  }
+
 
 }
