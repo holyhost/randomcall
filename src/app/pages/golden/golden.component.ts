@@ -105,6 +105,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
    */
   onClassChange(res){
     this.luckyStu = null
+    this.luckyName = '随机点名';
   }
 
 

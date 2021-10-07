@@ -52,7 +52,7 @@ nz-select {
     // border: 1px solid rgb(130, 216, 18);
     font-size: 5rem;
     font-weight: 600;
-    font-family: 'Rig Bold Inline', sans-serif;
+    font-family:  "Arial","Microsoft YaHei","黑体","宋体", sans-serif;
     line-height: 200px;
     text-align: center;
     margin: 40px auto 30px auto;
@@ -69,40 +69,18 @@ nz-select {
     // font-family: "Rig Bold Inline", sans-serif;
 	text-shadow: 7px 7px 4px #636363;
     -webkit-text-stroke: 0.1px black;
-    letter-spacing: -2.5rem;
+    letter-spacing: 1rem;
   }
 
 
-@font-face {
-	font-family:'Rig Bold Coarse'; 
-	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
-}
 
-@font-face {
-	font-family:'Rig Bold Extrude'; 
-	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
-}
 
-@font-face {
-	font-family:'Rig Bold Shadow'; 
-	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
-}
-
-@font-face {
-	font-family:'Rig Bold Face'; 
-	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
-}
-
-@font-face {
-	font-family:'Rig Bold Inline'; 
-	src:url(../../../assets/font/Slidexiaxing-Regular.ttf);
-}
 
 @media (max-width: 1090px) {
 
     .container{
 
-        background-image: url(../../../assets/pictures/name_bg1.jpg);
+        // background-image: url(../../../assets/pictures/name_bg1.jpg);
         // background-size:cover;
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -120,10 +98,10 @@ nz-select {
         color: #ded428;
         text-align: center;
         font-size: 8.3rem;
-        font-family: "Rig Bold Inline", sans-serif;
+        font-family:  "Arial","Microsoft YaHei","黑体","宋体", sans-serif;
         text-shadow: 7px 7px 4px #636363;
         -webkit-text-stroke: 0.1px black;
-        letter-spacing: -2.5rem;
+        // letter-spacing: -2.5rem;
     }
 
 }
@@ -131,7 +109,7 @@ nz-select {
 
     .container{
 
-        background-image: url(../../../assets/pictures/name_bg1.jpg);
+        // background-image: url(../../../assets/pictures/name_bg1.jpg);
         // background-size:cover;
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -149,11 +127,11 @@ nz-select {
         display: block;
         color: #ded428;
         text-align: center;
-        font-size: 118px;
-        font-family: "Rig Bold Inline", sans-serif;
+        font-size: 7rem;
+        font-family:  "Arial","Microsoft YaHei","黑体","宋体", sans-serif;
         text-shadow: 7px 7px 4px #636363;
         -webkit-text-stroke: 0.1px black;
-        letter-spacing: -2.5rem;
+        // letter-spacing: -2.5rem;
     }
 
 }
@@ -162,7 +140,7 @@ nz-select {
 
     .container{
 
-        background-image: url(../../../assets/pictures/name_bg1.jpg);
+        // background-image: url(../../../assets/pictures/name_bg1.jpg);
         // background-size:cover;
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -179,11 +157,11 @@ nz-select {
         display: block;
         color: #ded428;
         text-align: center;
-        font-size: 6rem;
-        font-family: "Rig Bold Inline", sans-serif;
+        font-size: 4rem;
+        font-family:  "Arial","Microsoft YaHei","黑体","宋体", sans-serif;
         text-shadow: 7px 7px 4px #636363;
         -webkit-text-stroke: 0.1px black;
-        letter-spacing: -2.5rem;
+        // letter-spacing: -2.5rem;
     }
 }
 
@@ -192,7 +170,7 @@ nz-select {
 
     .container{
 
-        background-image: url(../../../assets/pictures/name_bg1.jpg);
+        // background-image: url(../../../assets/pictures/name_bg1.jpg);
         // background-size:cover;
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -221,10 +199,10 @@ nz-select {
         color: #ded428;
         text-align: center;
         font-size: 4rem;
-        font-family: "Rig Bold Inline", sans-serif;
+        font-family:  "Arial","Microsoft YaHei","黑体","宋体", sans-serif;
         text-shadow: 7px 7px 4px #636363;
         -webkit-text-stroke: 0.1px black;
-        letter-spacing: -1.2rem;
+        // letter-spacing: -1.2rem;
     }
 }
 
