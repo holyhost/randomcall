@@ -1,0 +1,76 @@
+
+
+$main_color : #17B794;
+.new_class{
+    width: 8rem;
+}
+
+.gird_item {
+    width: '20%';
+    text-align: 'center';
+  }
+
+.stu_area{
+    margin-top: 1rem;
+}
+
+.ant-card-grid {
+    width: 20%;
+    padding: 0.3rem;
+    float: left;
+    text-align: center;
+}
+
+.detail_btn{
+    margin-top: -12px;
+    margin-bottom: 6px;
+}
+
+.ant-btn-primary{
+    background-color: $main_color;
+    border-color: $main_color;
+}
+.ant-radio-input:checked{
+    background-color: $main_color !important;
+}
+.ant-radio-checked .ant-radio-inner {
+    border-color: $main_color  !important;
+}
+.ant-radio-inner{
+    background-color: $main_color !important;
+}
+.ant-radio-inner:after{
+    background-color: $main_color !important;
+}
+a{
+    color: $main_color !important;
+}
+.ant-pagination-item-active{
+    border-color: $main_color;
+}
+
+.round{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #17B794;
+    color: white;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.5rem;
+    text-indent: -1px;
+}
+
+.add_more{
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.editable-cell{
+    color: #17B794;
+    min-height: 1rem;
+}
+
+nz-select{
+    min-width: 7rem;
+}

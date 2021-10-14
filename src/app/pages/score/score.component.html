@@ -1,0 +1,122 @@
+<app-head></app-head>
+<div class="content_container">
+    <ng-container *ngIf="dataList && dataList.length>0">
+        <h3 >成绩单</h3>
+        <nz-collapse>
+            <nz-collapse-panel
+              *ngFor="let item of gradleList;let i = index;"
+              [nzHeader]="item.gradle.title"
+              [nzActive]="false"
+              [nzDisabled]="false"
+              (nzActiveChange)="onClassCollapseChange($event,i)"
+            >
+            <button *ngIf="!item.detail"  (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">编辑数据</button>
+            <button *ngIf="item.detail" (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">查看数据</button>
+            &nbsp;&nbsp;&nbsp;
+            <button nz-button (click)="exportGradleExcel(item.gradle.title,item.data)" nzType="primary" nzSize="small" nzShape="round">生成Excel</button>
+
+            <nz-table *ngIf="gradleList[i]" #table nzBordered [nzData]="item.data">
+                <thead>
+                  <tr>
+                    <th>姓名</th>
+                    <th>得分</th>
+                    <th>科目</th>
+                    <th>班级</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let sss of table.data;let ssi=index;">
+                    <td>
+                      <div [ngClass]="{'editable-cell':item.detail}" [hidden]="editId === sss.id" (click)="startEdit(sss.id,sss.sname,item.detail)">
+                        {{ sss.sname }}
+                      </div>
+                      <input   [id]="'input_name_'+sss.id" [hidden]="editId !== sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.sname" (blur)="stopEdit(sss.id,sss.sname)" />
+                    </td>
+                    <td>
+                      <div [ngClass]="{'editable-cell':item.detail}" [hidden]="editSex === 'input_sex_'+sss.id" (click)="startEditSex(sss.id,sss.g_value,item.detail)">
+                        {{sss.g_value}}
+                      </div>
+                      <input  [id]="'input_sex_'+sss.id" [hidden]="editSex !== 'input_sex_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.g_value" (blur)="stopEditSex(sss.id,sss.g_value)" />
+                    </td>
+                    <td>
+                      <div [ngClass]="{'editable-cell':item.detail}" [hidden]="editScore === 'input_score_'+sss.id" (click)="startEditScore(sss.id,sss.score,item.detail)">
+                        {{sss.subject}}
+                      </div>
+                      <input [id]="'input_score_'+sss.id" [hidden]="editScore !== 'input_score_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.score" (blur)="stopEditScore(sss.id,sss.score)" placeholder="请输入科目" />
+                    </td>
+                    <td>
+                      {{sss.clazname}}
+                    </td>
+                  </tr>
+                </tbody>
+            </nz-table>
+            </nz-collapse-panel>
+        </nz-collapse>
+
+    </ng-container>
+    
+
+
+
+    <nz-card  nzTitle="录入成绩单" [nzExtra]="tempTableName">
+      <nz-table #scoreTable nzBordered [nzData]="tempTableData" [nzShowPagination]="false">
+        <thead>
+          <tr>
+            <th nzWidth="4rem">序号</th>
+            <th >姓名</th>
+            <th nzWidth="8rem">分数</th>
+            <th nzWidth="4rem">删除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bean of tempTableData;let inx = index;" class="editable-row">
+            <td>
+              <div class="round">
+                {{inx+1}}
+              </div>
+            </td>
+            <td>
+              <input  type="text" nz-input [(ngModel)]="bean.name" />
+            </td>
+            <td>
+              <input  type="text" pattern="[0-9]" title="分数值是数字" nz-input [(ngModel)]="bean.score" />
+            </td>
+  
+            <td>
+              <div style="text-align: center;">
+                <svg class="icon primary_color" aria-hidden="true" (click)="deleteTempRow(inx)">
+                  <use xlink:href="#icon-shanchu"></use>
+                </svg>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <div class="add_more">
+        <button nz-button (click)="addTempRow()" nzType="primary">增加一行</button>&nbsp;&nbsp;&nbsp;
+        <button nz-button (click)="exportTempTable()" nzType="primary">生成Excel</button>&nbsp;&nbsp;&nbsp;
+        <button nz-button (click)="finishTempTable()" nzType="primary">保存</button>
+      </div>
+    </nz-card>
+
+    <ng-template #tempTableName>
+      <input style="width: 10rem;margin-right:1rem" type="text" nz-input [(ngModel)]="scoreName" placeholder="xxxx年第x次月考成绩"/>
+      <nz-select [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" nzAllowClear  [nzPlaceHolder]="'选择班级'">
+        <ng-container *ngFor="let item of dataList">
+            <nz-option [nzValue]="item.name" [nzLabel]="item.name"></nz-option>
+        </ng-container>
+      </nz-select>
+    </ng-template>
+    
+
+    <!-- <pre><b>Version: {{ver}}</b></pre>
+    <input type="file" (change)="onFileChange($event)" multiple="false" />
+    <table class="sjs-table">
+      <tr *ngFor="let row of excelData">
+        <td *ngFor="let val of row">
+          {{val}}
+        </td>
+      </tr>
+    </table>
+    <button (click)="exportExcel()">下载Excel</button> -->
+</div>

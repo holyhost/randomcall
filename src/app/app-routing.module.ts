@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'weather', loadChildren: () => import('./pages/help/help.module').then(m => m.HelpModule) },
   { path: 'golden',canActivate: [AuthGuard], loadChildren: () => import('./pages/golden/golden.module').then(m => m.GoldenModule) },
   { path: 'students',canActivate: [AuthGuard], loadChildren: () => import('./pages/students/students.module').then(m => m.StudentsModule) },
+  { path: 'score', loadChildren: () => import('./pages/score/score.module').then(m => m.ScoreModule) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 

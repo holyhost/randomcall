@@ -18,6 +18,7 @@ export class AppComponent {
   
   constructor(public data:DataService,public theme: ThemeService){
     this.data.checkUserStatus().subscribe((res:any)=>{
+      this.data.isLoading=false;
       if(res && res.status && res.status ==='ok'){
           //验证无问题
       }else{
@@ -27,6 +28,7 @@ export class AppComponent {
       
     },err=>{
       console.log(err)
+      this.data.isLoading=false;
       this.data.account = "";
       this.data.pwd= '';
     })

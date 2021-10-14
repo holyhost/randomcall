@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/css/theme.scss';
 
+$main_color: #17B794;
 .icon {
     width: 1em;
     height: 1em;
@@ -18,8 +19,12 @@
 .top_little{
     margin-top: .5rem;
 }
+
+.primary_color{
+    color: $main_color;
+}
 .ant-btn-primary{
-    color: #17B794;
+    color: $main_color;
 }
 .topm1{
     margin-top: 4px;

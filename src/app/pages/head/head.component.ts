@@ -13,6 +13,7 @@ export class HeadComponent implements OnInit {
   status: boolean = false;
   myinfo: any[] = [
     {label:'我的学生',name:'my_students',icon:'#icon-dianmingicon-32',path:'/students'},
+    {label:'成绩管理',name:'my_score',icon:'#icon-dianmingicon-32',path:'/score'},
     {label:'我的信息',name:'my_info',icon:'#icon-xitong-copy',path:'/myinfo'},
     {label:'退出登录',name:'my_out',icon:'#icon-bangzhu',path:''},
   ]

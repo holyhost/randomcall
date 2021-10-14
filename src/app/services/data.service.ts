@@ -231,6 +231,42 @@ export class DataService {
     )
   }
 
+  /**
+   * 成绩单列表
+   * @returns 
+   */
+  getScoreList(){
+   
+    let params = {
+      "teaname":this.account,
+      "token":this.pwd
+    }
+    return this.http.post(this.proxy+"api/v1/gradle/get.php",params).pipe(
+      map((data:any)=>{
+        return data;
+      })
+    )
+  }
+
+    /**
+   * 单个成绩单内容列表
+   * @returns 
+   */
+     getGradleList(gid:string){
+      this.isLoading = true;
+      let params = {
+        "teaname":this.account,
+        "token":this.pwd,
+        "gid":gid
+      }
+      return this.http.post(this.proxy+"api/v1/gradle/detail.php",params).pipe(
+        map((data:any)=>{
+          this.isLoading = false
+          return data;
+        })
+      )
+    }
+
 
 
 
@@ -299,6 +335,29 @@ export class DataService {
     return this.http.post(this.proxy+"api/v1/student/update.php",params).pipe(
       map((data:any)=>{
         this.isLoading = false
+        return data;
+      })
+    )
+  }
+
+  addGradleInfo(title:string,data:any,clazname:string){
+    if(!title || title.length<1){
+      let date = new Date();
+      
+      title = clazname+(date.getMonth()+1)+"月"+date.getDate()+"日成绩单"
+    }
+    let params = {
+        "teaname": this.account,
+        "clazname": clazname,
+        "token": this.pwd,
+        "title": title,
+        "gid": "gid_"+this.randomString(5)+"_"+new Date().getTime(),
+        "datalist": data
+    }
+    return this.http.post(this.proxy+"api/v1/gradle/add.php",params).pipe(
+      map((data:any)=>{
+        this.isLoading = false
+        console.log(data)
         return data;
       })
     )
