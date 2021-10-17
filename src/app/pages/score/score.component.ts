@@ -27,6 +27,7 @@ export class ScoreComponent implements OnInit {
 	ver: string = XLSX.version;
   tempTableData: ScoreBean[] = [];
   curClass = null;
+  tempSubject:string = '';//科目
   curStudents :ClasBean[] = [];
   gradleList: GradleType[] = []
 
@@ -146,6 +147,7 @@ export class ScoreComponent implements OnInit {
     
   }
   startEditScore(id: string,score:string,detail:boolean): void {
+    console.log(id,detail)
     if(!detail){
       return;
     }
@@ -201,21 +203,21 @@ export class ScoreComponent implements OnInit {
     console.log("stop-edit")
     this.editScore = null;
     if(this.tempScore === score || this.tempScore.length<1){
-      
+      console.log("no change")
       return;
     }
     
     //保存数据
-    // this.data.updateScore(Number.parseInt(id),Number.parseInt(score),3).subscribe(res=>{
-    //   if(res && res.status && res.status==='ok'){
-    //     this.data.showMessage("更新分数成功！")
-    //   }else{
-    //     this.data.showMessageError("更新分数失败！")
-    //   }
-    // },err=>{
-    //   console.log(err)
-    //   this.data.showMessageError("更新分数失败！")
-    // })
+    this.data.updateGradleInfo(id,score).subscribe(res=>{
+      if(res && res.status && res.status==='ok'){
+        this.data.showMessage("更新分数成功！")
+      }else{
+        this.data.showMessageError("更新分数失败！")
+      }
+    },err=>{
+      console.log(err)
+      this.data.showMessageError("更新分数失败！")
+    })
   }
 
   addRow(): void {
@@ -334,10 +336,12 @@ export class ScoreComponent implements OnInit {
   }
 
   finishTempTable(){
-    console.log(this.tempTableData)
-    this.data.addGradleInfo(this.scoreName,this.tempTableData,this.curClass).subscribe(res=>{
+    
+    this.data.addGradleInfo(this.scoreName,this.tempTableData,this.curClass,this.tempSubject).subscribe(res=>{
       if(res && res.status && res.status==='ok'){
         this.data.showMessage("录入成绩单成功！")
+        this.tempTableData = []
+        this.initMyScoreList();
       }else{
         this.data.showMessageError("录入成绩单失败！")
       }

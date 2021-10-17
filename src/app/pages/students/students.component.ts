@@ -59,14 +59,11 @@ export class StudentsComponent implements OnInit {
 
   onClassCollapseChange(status,index:number){
 
-    console.log(status)
-    console.log(index)
   }
 
 
   formatStuArea(){
-    console.log(this.stuArea)
-    console.log(this.radioValue)
+
     if(this.stuArea && this.stuArea.length>1){
       let splitStr = '';
       if(this.stuArea.includes(',')){
@@ -145,10 +142,10 @@ export class StudentsComponent implements OnInit {
   }
 
   stopEdit(id: string,name: string): void {
-    console.log("stop-edit")
+    
     this.editId = null;
     if(this.tempName === name || this.tempName.length<1){
-      console.log("名字没有变化")
+      // console.log("名字没有变化")
       return;
     }
     
@@ -165,7 +162,7 @@ export class StudentsComponent implements OnInit {
     })
   }
   stopEditSex(id: string,sex: string): void {
-    console.log("stop-edit")
+    // console.log("stop-edit")
     this.editSex = null;
     if(this.tempSex === sex || this.tempSex.length<1){
       
@@ -185,7 +182,7 @@ export class StudentsComponent implements OnInit {
     })
   }
   stopEditScore(id: string,score: string): void {
-    console.log("stop-edit")
+    // console.log("stop-edit")
     this.editScore = null;
     if(this.tempScore === score || this.tempScore.length<1){
       
@@ -221,7 +218,7 @@ export class StudentsComponent implements OnInit {
         this.data.showMessageError("删除失败！")
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.showMessageError("删除失败！")
     })
     

@@ -5,6 +5,7 @@
         <span class="menu_item" (click)="onItemClick('wather')">天气</span>
         <span class="menu_item" (click)="onItemClick('golden')">点名</span>
         <span class="menu_item" (click)="onItemClick('setting')">设置</span>
+        <span class="menu_item" (click)="onItemClick('register')" *ngIf="!data.account || !data.pwd">注册</span>
         <a nz-dropdown class="account" [nzDropdownMenu]="menu" *ngIf="status">
           {{loginName}}
           <i nz-icon nzType="down"></i>

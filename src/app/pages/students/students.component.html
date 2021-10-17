@@ -28,19 +28,19 @@
                 <tbody>
                   <tr *ngFor="let sss of table.data;let ssi=index;">
                     <td>
-                      <div class="editable-cell" [hidden]="editId === sss.id" (click)="startEdit(sss.id,sss.name)">
+                      <div [ngClass]="{'editable-cell':classStatus[i].detail}" [hidden]="editId === sss.id" (click)="startEdit(sss.id,sss.name)">
                         {{ sss.name }}
                       </div>
                       <input [id]="'input_name_'+sss.id" [hidden]="editId !== sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.name" (blur)="stopEdit(sss.id,sss.name)" />
                     </td>
                     <td>
-                      <div class="editable-cell" [hidden]="editSex === 'input_sex_'+sss.id" (click)="startEditSex(sss.id,sss.sex)">
+                      <div [ngClass]="{'editable-cell':classStatus[i].detail}" [hidden]="editSex === 'input_sex_'+sss.id" (click)="startEditSex(sss.id,sss.sex)">
                         {{sss.sex}}
                       </div>
                       <input [id]="'input_sex_'+sss.id" [hidden]="editSex !== 'input_sex_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.sex" (blur)="stopEditSex(sss.id,sss.sex)" />
                     </td>
                     <td>
-                      <div class="editable-cell" [hidden]="editScore === 'input_score_'+sss.id" (click)="startEditScore(sss.id,sss.score)">
+                      <div [ngClass]="{'editable-cell':classStatus[i].detail}" [hidden]="editScore === 'input_score_'+sss.id" (click)="startEditScore(sss.id,sss.score)">
                         {{sss.score}}
                       </div>
                       <input [id]="'input_score_'+sss.id" [hidden]="editScore !== 'input_score_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.score" (blur)="stopEditScore(sss.id,sss.score)" />

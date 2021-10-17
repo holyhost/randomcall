@@ -1,7 +1,6 @@
 <app-head></app-head>
 <div class="content_container">
-    <ng-container *ngIf="dataList && dataList.length>0">
-        <h3 >成绩单</h3>
+    <nz-card  nzTitle="成绩单"  *ngIf="dataList && dataList.length>0">
         <nz-collapse>
             <nz-collapse-panel
               *ngFor="let item of gradleList;let i = index;"
@@ -14,13 +13,15 @@
             <button *ngIf="item.detail" (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">查看数据</button>
             &nbsp;&nbsp;&nbsp;
             <button nz-button (click)="exportGradleExcel(item.gradle.title,item.data)" nzType="primary" nzSize="small" nzShape="round">生成Excel</button>
+            &nbsp;&nbsp;&nbsp;
+            <button nz-button  nzType="primary" nzSize="small" nzShape="round" *ngIf="item.gradle.subject">{{item.gradle.subject}}</button>
 
             <nz-table *ngIf="gradleList[i]" #table nzBordered [nzData]="item.data">
                 <thead>
                   <tr>
                     <th>姓名</th>
                     <th>得分</th>
-                    <th>科目</th>
+                    <!-- <th>科目</th> -->
                     <th>班级</th>
                   </tr>
                 </thead>
@@ -33,17 +34,14 @@
                       <input   [id]="'input_name_'+sss.id" [hidden]="editId !== sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.sname" (blur)="stopEdit(sss.id,sss.sname)" />
                     </td>
                     <td>
-                      <div [ngClass]="{'editable-cell':item.detail}" [hidden]="editSex === 'input_sex_'+sss.id" (click)="startEditSex(sss.id,sss.g_value,item.detail)">
+                      <div [ngClass]="{'editable-cell':item.detail}" [hidden]="editScore === 'input_score_'+sss.id" (click)="startEditScore(sss.id,sss.g_value,item.detail)">
                         {{sss.g_value}}
                       </div>
-                      <input  [id]="'input_sex_'+sss.id" [hidden]="editSex !== 'input_sex_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.g_value" (blur)="stopEditSex(sss.id,sss.g_value)" />
+                      <input  [id]="'input_score_'+sss.id" [hidden]="editScore !== 'input_score_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.g_value" (blur)="stopEditScore(sss.id,sss.g_value)" />
                     </td>
-                    <td>
-                      <div [ngClass]="{'editable-cell':item.detail}" [hidden]="editScore === 'input_score_'+sss.id" (click)="startEditScore(sss.id,sss.score,item.detail)">
+                    <!-- <td>
                         {{sss.subject}}
-                      </div>
-                      <input [id]="'input_score_'+sss.id" [hidden]="editScore !== 'input_score_'+sss.id" type="text" style="width: 6rem;" nz-input [(ngModel)]="sss.score" (blur)="stopEditScore(sss.id,sss.score)" placeholder="请输入科目" />
-                    </td>
+                    </td> -->
                     <td>
                       {{sss.clazname}}
                     </td>
@@ -53,18 +51,21 @@
             </nz-collapse-panel>
         </nz-collapse>
 
-    </ng-container>
+    </nz-card>
     
 
 
-
-    <nz-card  nzTitle="录入成绩单" [nzExtra]="tempTableName">
+    <div class="topm4"></div>
+    <nz-card  nzTitle="录入成绩单">
+      
+      <ng-container *ngTemplateOutlet="tempTableName"></ng-container>
+      <div class="topm4"></div>
       <nz-table #scoreTable nzBordered [nzData]="tempTableData" [nzShowPagination]="false">
         <thead>
           <tr>
             <th nzWidth="4rem">序号</th>
             <th >姓名</th>
-            <th nzWidth="8rem">分数</th>
+            <th nzWidth="6rem">分数</th>
             <th nzWidth="4rem">删除</th>
           </tr>
         </thead>
@@ -101,6 +102,7 @@
 
     <ng-template #tempTableName>
       <input style="width: 10rem;margin-right:1rem" type="text" nz-input [(ngModel)]="scoreName" placeholder="xxxx年第x次月考成绩"/>
+      <input style="width: 4rem;margin-right:1rem" type="text" nz-input [(ngModel)]="tempSubject" placeholder="科目"/>
       <nz-select [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" nzAllowClear  [nzPlaceHolder]="'选择班级'">
         <ng-container *ngFor="let item of dataList">
             <nz-option [nzValue]="item.name" [nzLabel]="item.name"></nz-option>
@@ -119,4 +121,5 @@
       </tr>
     </table>
     <button (click)="exportExcel()">下载Excel</button> -->
+    <div style="height: 3rem;"></div>
 </div>

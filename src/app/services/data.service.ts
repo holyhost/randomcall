@@ -340,7 +340,7 @@ export class DataService {
     )
   }
 
-  addGradleInfo(title:string,data:any,clazname:string){
+  addGradleInfo(title:string,data:any,clazname:string="未命名",subject:string=''){
     if(!title || title.length<1){
       let date = new Date();
       
@@ -351,10 +351,29 @@ export class DataService {
         "clazname": clazname,
         "token": this.pwd,
         "title": title,
+        "subject": subject,
         "gid": "gid_"+this.randomString(5)+"_"+new Date().getTime(),
         "datalist": data
     }
     return this.http.post(this.proxy+"api/v1/gradle/add.php",params).pipe(
+      map((data:any)=>{
+        this.isLoading = false
+        console.log(data)
+        return data;
+      })
+    )
+  }
+  updateGradleInfo(id:string,score:string=''){
+
+    let params = {
+        "teaname": this.account,
+        "id": id,
+        "token": this.pwd,
+        "type": 1,
+        "score": score,
+
+    }
+    return this.http.post(this.proxy+"api/v1/gradle/update.php",params).pipe(
       map((data:any)=>{
         this.isLoading = false
         console.log(data)
