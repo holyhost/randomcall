@@ -358,7 +358,7 @@ export class DataService {
     return this.http.post(this.proxy+"api/v1/gradle/add.php",params).pipe(
       map((data:any)=>{
         this.isLoading = false
-        console.log(data)
+        // console.log(data)
         return data;
       })
     )
@@ -376,7 +376,7 @@ export class DataService {
     return this.http.post(this.proxy+"api/v1/gradle/update.php",params).pipe(
       map((data:any)=>{
         this.isLoading = false
-        console.log(data)
+        // console.log(data)
         return data;
       })
     )

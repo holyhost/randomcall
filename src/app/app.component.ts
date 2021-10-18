@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from './services/data.service';
 import { ThemeService } from 'src/app/services/theme.service';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
     {name:'menu_help',icon:'#icon-bangzhu',path:'/help'},
   ]
   
-  constructor(public data:DataService,public theme: ThemeService){
+  constructor(public data:DataService,public theme: ThemeService,public router: Router){
     this.data.checkUserStatus().subscribe((res:any)=>{
       this.data.isLoading=false;
       if(res && res.status && res.status ==='ok'){
@@ -27,10 +28,19 @@ export class AppComponent {
       }
       
     },err=>{
-      console.log(err)
+      
       this.data.isLoading=false;
       this.data.account = "";
       this.data.pwd= '';
+    })
+    this.router.events.subscribe(res=>{
+      // console.log(res)
+      if(res instanceof NavigationStart){
+        this.isLoading = true;
+      }
+      if(res instanceof NavigationEnd){
+        this.isLoading = false;
+      }
     })
   }
   

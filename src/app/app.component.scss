@@ -10,6 +10,25 @@
     border-radius: 6px;
     border-radius: 6px;
 }
+.navigation_container{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    z-index: 99999;
+    position: absolute;
+}
+.navigation{
+    height: 3rem;
+    width: 3rem;
+    background-color: red;
+    z-index: 99999;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: url('/assets/pictures/loadding.gif')  no-repeat;
+    background-size:100% 100%;
+    border-radius: 4px;
+}
 
 
 .app-header{

@@ -6,6 +6,9 @@
     <ng-container *ngIf="data.isLoading">
         <nz-spin nzSimple [nzSize]="'large'" class="loading" [nzTip]="'message_load_data' | translate"></nz-spin>
     </ng-container>
+    <div class="navigation" *ngIf="isLoading">
+        
+    </div>
       <!-- 鼠标点击的爆炸特效 -->
      <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:9999999999999999999;pointer-events:none;"></canvas>
      <div style="height:1px; margin-top:-1px;clear: both;overflow:hidden;"></div>  

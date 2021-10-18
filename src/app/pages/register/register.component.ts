@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
         this.validateForm.controls[i].setErrors({
           notUnique: true
         })
-        console.log("error")
+        // console.log("error")
       }
     }
     if(this.validateForm.controls.password.value !== this.validateForm.controls.password2.value){
@@ -52,8 +52,9 @@ export class RegisterComponent implements OnInit {
 
     if (this.validateForm.invalid) {
       console.log("不满足")
+      this.data.showMessageError("请检查输入")
     } else {
-      console.log(this.validateForm.value)
+      // console.log(this.validateForm.value)
       this.isbtn = false;
       this.data.register(this.validateForm.value).subscribe((res:any)=>{
         this.isbtn = true;
@@ -64,7 +65,7 @@ export class RegisterComponent implements OnInit {
           this.regSuccess = false;
         }
       },error=>{
-        console.log(error)
+        // console.log(error)
         this.isbtn = true;
         this.data.isLoading = false;
       })

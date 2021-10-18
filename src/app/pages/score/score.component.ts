@@ -58,7 +58,7 @@ export class ScoreComponent implements OnInit {
         
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.isLoading = false;
     })
   }
@@ -85,7 +85,7 @@ export class ScoreComponent implements OnInit {
 
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.isLoading = false;
     })
   }
@@ -110,7 +110,7 @@ export class ScoreComponent implements OnInit {
           this.gradleList[index].data = res.data;
         }
       },err=>{
-        console.log(err)
+        // console.log(err)
         this.data.isLoading = false;
       })
     }
@@ -147,7 +147,7 @@ export class ScoreComponent implements OnInit {
     
   }
   startEditScore(id: string,score:string,detail:boolean): void {
-    console.log(id,detail)
+    // console.log(id,detail)
     if(!detail){
       return;
     }
@@ -160,10 +160,10 @@ export class ScoreComponent implements OnInit {
   }
 
   stopEdit(id: string,name: string): void {
-    console.log("stop-edit")
+    // console.log("stop-edit")
     this.editId = null;
     if(this.tempName === name || this.tempName.length<1){
-      console.log("名字没有变化")
+      // console.log("名字没有变化")
       return;
     }
     
@@ -180,7 +180,7 @@ export class ScoreComponent implements OnInit {
     // })
   }
   stopEditSex(id: string,sex: string): void {
-    console.log("stop-edit")
+    // console.log("stop-edit")
     this.editSex = null;
     if(this.tempSex === sex || this.tempSex.length<1){
       
@@ -200,10 +200,10 @@ export class ScoreComponent implements OnInit {
     // })
   }
   stopEditScore(id: string,score: string): void {
-    console.log("stop-edit")
+    // console.log("stop-edit")
     this.editScore = null;
     if(this.tempScore === score || this.tempScore.length<1){
-      console.log("no change")
+      // console.log("no change")
       return;
     }
     
@@ -215,7 +215,7 @@ export class ScoreComponent implements OnInit {
         this.data.showMessageError("更新分数失败！")
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.showMessageError("更新分数失败！")
     })
   }
@@ -236,7 +236,7 @@ export class ScoreComponent implements OnInit {
         this.data.showMessageError("删除失败！")
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.showMessageError("删除失败！")
     })
     
@@ -253,7 +253,7 @@ export class ScoreComponent implements OnInit {
 		const reader: FileReader = new FileReader();
 		reader.onload = (e: any) => {
 			/* read workbook */
-      console.log("--")
+      // console.log("--")
 			const ab: ArrayBuffer = e.target.result;
 			const wb: XLSX.WorkBook = XLSX.read(ab,{type: 'array'});
 
@@ -346,7 +346,7 @@ export class ScoreComponent implements OnInit {
         this.data.showMessageError("录入成绩单失败！")
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.showMessageError("录入成绩单失败！")
     })
   }

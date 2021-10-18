@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
   ) { 
     this.rooterChange = router.events.subscribe(item => {
       if (item instanceof NavigationEnd) {
-        console.log(item.url);
+        // console.log(item.url);
         this.curUrl = item.url
       }
     

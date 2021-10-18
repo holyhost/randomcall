@@ -75,7 +75,6 @@ export class GoldenComponent implements OnInit,AfterViewInit {
 
 
   initMyStudents(){
-    this.data.isLoading = true;
     this.data.getStudents().subscribe(res=>{
       this.data.isLoading = false;
     
@@ -94,8 +93,9 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         })
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.isLoading = false;
+      this.data.showMessageError("加载学生信息失败！")
     })
   }
 
@@ -110,7 +110,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
 
 
   updateScore(score=0){
-    console.log(this.luckyStu)
+    // console.log(this.luckyStu)
     this.data.updateScore(Number.parseInt(this.luckyStu.id+""),score,1).subscribe(res=>{
       if(res && res.status && res.status==='ok'){
         this.luckyStu.score = this.luckyStu.score + score;
@@ -120,7 +120,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
         this.data.showMessage(res&&res.msg?res.msg:"修改分数失败")
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.showMessage("修改分数失败")
       //show error
     });

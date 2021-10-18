@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.validateForm.invalid) {
-      console.log("不满足")
+      this.data.showMessageError("请检查输入")
+      return;
     } else {
-      console.log(this.validateForm.value)
     
       this.data.login(this.validateForm.value).subscribe((res:any)=>{
       
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           this.successmsg = res.error;
         }
       },error=>{
-        console.log(error)
+        // console.log(error)
         this.successmsg = "登录失败";
         this.data.isLoading = false;
       })

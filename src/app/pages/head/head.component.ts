@@ -57,7 +57,7 @@ export class HeadComponent implements OnInit {
         this.status = false;
       }
     },error=>{
-      console.log(error)
+      // console.log(error)
       this.data.isLoading = false;
     })
   }

@@ -49,10 +49,10 @@ export class StudentsComponent implements OnInit {
             this.dataList[legth-1].stu.push(stu)
           }
         })
-        console.log(this.dataList)
+        // console.log(this.dataList)
       }
     },err=>{
-      console.log(err)
+      // console.log(err)
       this.data.isLoading = false;
     })
   }

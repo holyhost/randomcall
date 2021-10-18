@@ -49,10 +49,10 @@ export class SettingComponent implements OnInit,OnDestroy {
       this.randomTime = Number.parseInt(this.randomTime+"")
       this.message.create("error","随机时间最多小数点后两位！")
     }else{
-      console.log(this.randomTime)
+      // console.log(this.randomTime)
       
     }
-    console.log(this.randomTime)
+    // console.log(this.randomTime)
     this.data.randomTime = this.randomTime
     this.data.setItem(Config.RandomTime,this.randomTime+"")
   }
