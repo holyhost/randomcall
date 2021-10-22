@@ -23,7 +23,7 @@
     background-color: red;
     z-index: 99999;
     position: absolute;
-    left: 50%;
+    left: calc(50%-1.5rem);
     top: 50%;
     background: url('/assets/pictures/loadding.gif')  no-repeat;
     background-size:100% 100%;
