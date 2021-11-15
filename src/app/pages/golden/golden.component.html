@@ -14,11 +14,16 @@
                     -减分
                 </button>
             </span>
-            <nz-select [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" nzPlaceHolder="选择班级">
+            <!-- <nz-select  [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" nzPlaceHolder="选择班级">
                 <ng-container *ngFor="let item of curStudents">
                     <nz-option [nzValue]="item.name" [nzLabel]="item.name"></nz-option>
                 </ng-container>
-            </nz-select>
+            </nz-select> -->
+            <select class="aselect" [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" placeholder="选择班级">
+                <ng-container *ngFor="let item of curStudents">
+                    <option [value]="item.name">{{item.name}}</option>
+                </ng-container>
+            </select>
         </div>
 
         <div id="lucky"><span class="name" (click)="onStart()">{{luckyName.trim()}}</span></div>

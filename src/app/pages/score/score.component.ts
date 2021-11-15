@@ -26,7 +26,7 @@ export class ScoreComponent implements OnInit {
 	scoreName: string = '';
 	ver: string = XLSX.version;
   tempTableData: ScoreBean[] = [];
-  curClass = null;
+  curClass = '';
   tempSubject:string = '';//科目
   curStudents :ClasBean[] = [];
   gradleList: GradleType[] = []
@@ -119,7 +119,10 @@ export class ScoreComponent implements OnInit {
   onClassChange(res){
     this.curClass = res
     this.tempTableData = []
-    this.initTempTableData();
+    if(res){
+      this.initTempTableData();
+    }
+    
   }
 
 

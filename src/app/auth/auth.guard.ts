@@ -14,14 +14,28 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.data.account && this.data.pwd){
-      return true;
+    console.log(state)
+    console.log(state.root.queryParams)
+    //no login input for login
+    if(state && state.root && state.root.queryParams && state.root.queryParams.type){
+      console.log("come  in")
+      let params = state.root.queryParams;
+      if(params.type && params.type==='info'){
+        //check auth info
+        return this.data.checkNoInputLogin(params.username,params.pwd);
+        
+      }
     }else{
-      //跳转到登录界面
-      this.data.redirectUrl = state.url;
-      return this.router.parseUrl('/login')
+
+      if(this.data.account && this.data.pwd){
+        return true;
+      }else{
+        //跳转到登录界面
+        this.data.redirectUrl = state.url;
+        return this.router.parseUrl('/login')
+      }
     }
-    
+
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,

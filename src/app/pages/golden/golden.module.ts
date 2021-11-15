@@ -6,6 +6,7 @@ import { GoldenRoutingModule } from './golden-routing.module';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeadModule } from '../head/head.module';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   declarations: [GoldenComponent],
@@ -15,6 +16,7 @@ import { HeadModule } from '../head/head.module';
     TranslateModule,
     FormsModule,
     HeadModule,
+    NzSelectModule,
     GoldenRoutingModule
   ]
 })

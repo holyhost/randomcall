@@ -87,5 +87,16 @@
           </div>
           
         </nz-list-item>
+
+        <nz-list-item  style="background: white;" *ngIf="data.account">
+          <nz-list-item-meta
+            [nzTitle] = "'item_often_link' | translate"
+            [nzDescription]="alink"
+          >
+          </nz-list-item-meta>
+          <button nz-button *ngIf="!alink" class="icon-container" (click)="createAlink()" nzType="primary">创建</button>
+          <button nz-button *ngIf="alink" class="icon-container" (click)="copyLink()" nzType="primary">复制</button>
+          
+        </nz-list-item>
       </nz-list>
 </div>

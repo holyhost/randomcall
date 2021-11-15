@@ -12,7 +12,6 @@ import { HeadModule } from './pages/head/head.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgZorroAntdModule, NzSpinModule } from 'ng-zorro-antd';
 
-
 export function TranslateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
   // return new TranslateHttpLoader(http, "./assets/i18n/", "/loan.json?time=" + new Date().getTime());

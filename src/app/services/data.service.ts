@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, of, timer } from 'rxjs';
+import { Observable, of, Subject, timer } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/internal/operators';
 import { Config } from './bean/config.constant';
 import { StuBean, Student } from './bean/student.type';
@@ -29,6 +29,7 @@ export class DataService {
   randomTime: number = 5;//随机时间
   randomType: string = "C"
   language=''
+  private mess = new Subject<Array<string>>() //消息主体
   constructor(
     public http: HttpClient,
     private i18n: TranslateService,
@@ -79,6 +80,34 @@ export class DataService {
       map(data=>{
         this.isLoading = false
         return data;
+      })
+    )
+  }
+  //校验无输入的登录方式链接里面的参数
+  checkNoInputLogin(name:string,pwd:string):Observable<boolean>{
+    this.isLoading = true;
+    // get url params
+    
+    // http://localhost:4200/#/golden?username=lala&userkey='123456789'&pwd='3a8a7017d8d4e834e027d234fd61502f'&type='info'
+    let params = {
+      "username":name,
+      "pwd":pwd,
+      "type":'info',
+      "userkey": this.randomString(9)
+    }
+    return this.http.post(this.proxy+"api/v1/user/check.php",params).pipe(
+      map((data:any)=>{
+        this.isLoading = false
+        console.log(data)
+        if(data && data.status === 'ok'){
+          this.account = data.data.name
+          this.pwd = data.data.pwd
+          this.sendMessage('login','1')
+          console.log(this.account)
+          
+          return true;
+        }
+        return false;
       })
     )
   }
@@ -301,6 +330,7 @@ export class DataService {
         if(result[2]&&(Number.parseInt(result[2])-new Date().getTime())<10*24*60*60*1000){
           this.account = result[0]
           this.pwd = result[1]
+          // this.sendMessage('user','1')
         }
         
       }
@@ -415,5 +445,34 @@ export class DataService {
     }
   
     return tempArr;
+  }
+
+  createAlink(){
+
+    if(!this.account && ! this.pwd){
+      return of(null)
+    }
+
+    let params = {
+        "username": this.account,
+        "password": this.pwd,
+        "password2": this.randomString(8),
+    }
+
+    this.isLoading = true;
+    return this.http.post(this.proxy+"api/v1/user/alink.php",params).pipe(
+      map((data:any)=>{
+        this.isLoading = false;
+        return data;
+      })
+    )
+  }
+
+  sendMessage(key:string,value:string){
+    this.mess.next([key,value])
+  }
+
+  getMessage(){
+    return this.mess.asObservable();
   }
 }

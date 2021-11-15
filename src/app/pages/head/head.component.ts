@@ -28,6 +28,13 @@ export class HeadComponent implements OnInit {
   }
 
   ngOnInit() {
+    // console.log("getmessage")
+    // this.data.getMessage().subscribe(res=>{
+    //   console.log(res)
+    //   if(res[0] === 'login'){
+    //     this.status = (res[1] === '1')
+    //   }
+    // })
   }
 
 

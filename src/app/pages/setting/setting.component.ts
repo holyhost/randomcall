@@ -13,6 +13,7 @@ export class SettingComponent implements OnInit,OnDestroy {
 
   randomTime: number = 0
   randomType: string = 'A';
+  alink = "";
   myinfo: any[] = [
     {label:'我的学生',name:'my_students',icon:'#icon-dianmingicon-32',path:'/students'},
     {label:'我的信息',name:'my_info',icon:'#icon-xitong-copy',path:'/myinfo'},
@@ -73,4 +74,39 @@ export class SettingComponent implements OnInit,OnDestroy {
     this.data.randomType = type;
     this.data.setItem(Config.RandomType,type);
   }
+
+  createAlink(){
+    this.data.createAlink().subscribe(res=>{
+      if(res && res.status === 'ok'){
+        this.alink = res.data
+        // http://localhost:4200/#/golden?username=lala&userkey='123456789'&pwd='3a8a7017d8d4e834e027d234fd61502f'&type='info'
+        this.alink = "http://pojun.top/#/golden?username="+this.data.account+"&userkey="+this.data.randomString(9)+"&pwd="+this.alink+"&type=info"
+      }else{
+        //失败
+        // this.successmsg = res.error;
+      }
+    },error=>{
+
+      this.data.showMessageError("创建失败！")
+    })
+  }
+
+  copyLink(){
+    const el = document.createElement('textarea');
+    el.value = this.alink;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    if (selected) {
+      document.getSelection().removeAllRanges();
+      document.getSelection().addRange(selected);
+      this.data.showMessage("复制成功！")
+    }
+  }
+
 }

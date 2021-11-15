@@ -103,11 +103,20 @@
     <ng-template #tempTableName>
       <input style="width: 10rem;margin-right:1rem" type="text" nz-input [(ngModel)]="scoreName" placeholder="xxxx年第x次月考成绩"/>
       <input style="width: 4rem;margin-right:1rem" type="text" nz-input [(ngModel)]="tempSubject" placeholder="科目"/>
-      <nz-select [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" nzAllowClear  [nzPlaceHolder]="'选择班级'">
+      <!-- <nz-select [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" nzAllowClear  [nzPlaceHolder]="'选择班级'">
         <ng-container *ngFor="let item of dataList">
             <nz-option [nzValue]="item.name" [nzLabel]="item.name"></nz-option>
         </ng-container>
-      </nz-select>
+      </nz-select> -->
+
+      <select class="aselect" value="" [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" placeholder="选择班级">
+        选择班级
+        <option value="" selected>选择班级</option>
+        <ng-container *ngFor="let item of dataList">
+            <option [value]="item.name">{{item.name}}</option>
+        </ng-container>
+      </select>
+
     </ng-template>
     
 

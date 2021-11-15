@@ -80,6 +80,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
     
       if(res && res.status && res.status ==='ok'){
         let temArr: StuBean[] = res.data;
+        this.curStudents = []
         temArr.forEach((stu)=>{
           let tempFind = this.curStudents.find(item=>item &&(item.name === stu.curClass));
           stu.score = Number.parseInt(stu.score+"");
@@ -91,6 +92,10 @@ export class GoldenComponent implements OnInit,AfterViewInit {
             this.curClass = stu.curClass;
           }
         })
+        // console.log(this.curStudents)
+        if(this.curStudents && this.curStudents.length>0){
+          this.curClass = this.curStudents[0].name
+        }
       }
     },err=>{
       // console.log(err)
@@ -104,6 +109,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
    * @param res 班级信息
    */
   onClassChange(res){
+    console.log(res)
     this.luckyStu = null
     this.luckyName = '随机点名';
   }
