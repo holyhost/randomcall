@@ -14,8 +14,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(state)
-    console.log(state.root.queryParams)
+    // console.log(state)
+    // console.log(state.root.queryParams)
     //no login input for login
     if(state && state.root && state.root.queryParams && state.root.queryParams.type){
       console.log("come  in")

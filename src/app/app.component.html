@@ -3,7 +3,7 @@
     <!-- <app-head></app-head> -->
     <!-- <app-golden *ngIf="!data.isLoading"></app-golden> -->
     <router-outlet ></router-outlet>
-    <ng-container *ngIf="data?.isLoading">
+    <ng-container *ngIf="showIsLoading() | async">
         <nz-spin nzSimple [nzSize]="'large'" class="loading" [nzTip]="'message_load_data' | translate"></nz-spin>
     </ng-container>
     <div class="navigation" *ngIf="isLoading">

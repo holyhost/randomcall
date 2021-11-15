@@ -64,13 +64,10 @@ export class DataService {
     
   }
 
-  getLoading():Observable<Boolean>{
-    return of(this.isLoading)
-  }
 
   checkUserStatus(){
-    this.isLoading = true;
-
+    this.sendLoadingMessage()
+    this.sendLoadingMessage()
     let params = {
       "username":this.account,
       "pwd":this.pwd,
@@ -78,14 +75,14 @@ export class DataService {
     }
     return this.http.post(this.proxy+"api/v1/user/check.php",params).pipe(
       map(data=>{
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
   }
   //校验无输入的登录方式链接里面的参数
   checkNoInputLogin(name:string,pwd:string):Observable<boolean>{
-    this.isLoading = true;
+    this.sendLoadingMessage()
     // get url params
     
     // http://localhost:4200/#/golden?username=lala&userkey='123456789'&pwd='3a8a7017d8d4e834e027d234fd61502f'&type='info'
@@ -97,13 +94,13 @@ export class DataService {
     }
     return this.http.post(this.proxy+"api/v1/user/check.php",params).pipe(
       map((data:any)=>{
-        this.isLoading = false
-        console.log(data)
+        this.sendLoadingMessage(false)
+        // console.log(data)
         if(data && data.status === 'ok'){
           this.account = data.data.name
           this.pwd = data.data.pwd
           this.sendMessage('login','1')
-          console.log(this.account)
+          // console.log(this.account)
           
           return true;
         }
@@ -131,7 +128,7 @@ export class DataService {
         return allClass
       }),
       catchError(error=>{
-        console.log(error)
+        // console.log(error)
         return []
       })
       )
@@ -162,7 +159,7 @@ export class DataService {
    */
   async delayShow(ms = 3000){
     await this.sleep(ms);
-    this.isLoading = false;
+    this.sendLoadingMessage(false)
   }
 
 
@@ -183,31 +180,31 @@ export class DataService {
   }
 
   login(params:any){
-    this.isLoading = true;
+    this.sendLoadingMessage()
     let dat = new Date();
     params.morep1 = this.randomString(dat.getMinutes()%5+4);
     params.morep2 = this.randomString(dat.getMinutes()%6+4);
 
     return this.http.post(this.proxy+"api/v1/user/login.php",params).pipe(
       map(data=>{
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
   }
   register(params:any){
-    this.isLoading = true;
+    this.sendLoadingMessage()
     return this.http.post(this.proxy+"api/v1/user/register.php",params).pipe(
       map(data=>{
 
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
   }
 
   logout(){
-    this.isLoading = true;
+    this.sendLoadingMessage()
     let params = {
       "username":this.account,
       "pwd2":this.pwd
@@ -217,14 +214,14 @@ export class DataService {
         if(data && data.status&&data.status === 'ok'){
           this.setItem(Config.UserAccount,'');
         }
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
   }
 
   getStudents(){
-    this.isLoading = true;
+    this.sendLoadingMessage()
     let params = {
       "teaname":this.account,
       "token":this.pwd
@@ -232,7 +229,7 @@ export class DataService {
     return this.http.post(this.proxy+"api/v1/student/get.php",params).pipe(
       map((data:any)=>{
 
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
@@ -245,7 +242,7 @@ export class DataService {
         msg: '请重新登录'
       })
     }
-    this.isLoading = true;
+    this.sendLoadingMessage()
     let params = {
       "teaname":this.account,
       "token":this.pwd,
@@ -254,7 +251,7 @@ export class DataService {
     }
     return this.http.post(this.proxy+"api/v1/student/add.php",params).pipe(
       map((data:any)=>{
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
@@ -282,7 +279,7 @@ export class DataService {
    * @returns 
    */
      getGradleList(gid:string){
-      this.isLoading = true;
+      this.sendLoadingMessage()
       let params = {
         "teaname":this.account,
         "token":this.pwd,
@@ -290,7 +287,7 @@ export class DataService {
       }
       return this.http.post(this.proxy+"api/v1/gradle/detail.php",params).pipe(
         map((data:any)=>{
-          this.isLoading = false
+          this.sendLoadingMessage(false)
           return data;
         })
       )
@@ -347,7 +344,7 @@ export class DataService {
     }
     return this.http.post(this.proxy+"api/v1/student/score.php",params).pipe(
       map((data:any)=>{
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
@@ -364,7 +361,7 @@ export class DataService {
     }
     return this.http.post(this.proxy+"api/v1/student/update.php",params).pipe(
       map((data:any)=>{
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         return data;
       })
     )
@@ -387,7 +384,7 @@ export class DataService {
     }
     return this.http.post(this.proxy+"api/v1/gradle/add.php",params).pipe(
       map((data:any)=>{
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         // console.log(data)
         return data;
       })
@@ -405,7 +402,7 @@ export class DataService {
     }
     return this.http.post(this.proxy+"api/v1/gradle/update.php",params).pipe(
       map((data:any)=>{
-        this.isLoading = false
+        this.sendLoadingMessage(false)
         // console.log(data)
         return data;
       })
@@ -459,10 +456,10 @@ export class DataService {
         "password2": this.randomString(8),
     }
 
-    this.isLoading = true;
+    this.sendLoadingMessage()
     return this.http.post(this.proxy+"api/v1/user/alink.php",params).pipe(
       map((data:any)=>{
-        this.isLoading = false;
+        this.sendLoadingMessage(false)
         return data;
       })
     )
@@ -474,5 +471,13 @@ export class DataService {
 
   getMessage(){
     return this.mess.asObservable();
+  }
+
+  sendLoadingMessage(value:boolean = true){
+    if(this.isLoading === value){
+      return
+    }
+    this.isLoading = value;
+    this.sendMessage('isRequest',value?'1':'0')
   }
 }

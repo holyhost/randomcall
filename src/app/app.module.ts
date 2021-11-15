@@ -57,7 +57,7 @@ export function LocaleIdFactory() {
 export class AppModule {
 
   constructor(private i18n: TranslateService, @Inject(LOCALE_ID) locale: string) {
-    console.log(locale)
+    // console.log(locale)
     if (environment.supportedLocale.indexOf(locale) === -1) {
       locale = "en-US";
     }

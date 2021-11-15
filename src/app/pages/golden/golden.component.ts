@@ -76,7 +76,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
 
   initMyStudents(){
     this.data.getStudents().subscribe(res=>{
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
     
       if(res && res.status && res.status ==='ok'){
         let temArr: StuBean[] = res.data;
@@ -99,7 +99,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
       }
     },err=>{
       // console.log(err)
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
       this.data.showMessageError("加载学生信息失败！")
     })
   }
@@ -109,7 +109,7 @@ export class GoldenComponent implements OnInit,AfterViewInit {
    * @param res 班级信息
    */
   onClassChange(res){
-    console.log(res)
+    // console.log(res)
     this.luckyStu = null
     this.luckyName = '随机点名';
   }

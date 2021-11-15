@@ -29,12 +29,12 @@ export class HeadComponent implements OnInit {
 
   ngOnInit() {
     // console.log("getmessage")
-    // this.data.getMessage().subscribe(res=>{
-    //   console.log(res)
-    //   if(res[0] === 'login'){
-    //     this.status = (res[1] === '1')
-    //   }
-    // })
+    this.data.getMessage().subscribe(res=>{
+      // console.log(res)
+      if(res[0] === 'login'){
+        this.status = (res[1] === '1')
+      }
+    })
   }
 
 
@@ -56,7 +56,7 @@ export class HeadComponent implements OnInit {
   }
 
   logout(){
-    this.data.isLoading = true;
+    this.data.sendLoadingMessage()
     this.data.logout().subscribe(res=>{
       if(res && res.status&&res.status =='ok'){
         this.data.account = '';
@@ -65,7 +65,7 @@ export class HeadComponent implements OnInit {
       }
     },error=>{
       // console.log(error)
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
     })
   }
 

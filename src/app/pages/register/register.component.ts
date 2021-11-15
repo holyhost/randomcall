@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
 
 
     if (this.validateForm.invalid) {
-      console.log("不满足")
+      // console.log("不满足")
       this.data.showMessageError("请检查输入")
     } else {
       // console.log(this.validateForm.value)
@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit {
       },error=>{
         // console.log(error)
         this.isbtn = true;
-        this.data.isLoading = false;
+        this.data.sendLoadingMessage(false)
       })
     }
 

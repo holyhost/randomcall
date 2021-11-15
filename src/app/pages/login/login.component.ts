@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       },error=>{
         // console.log(error)
         this.successmsg = "登录失败";
-        this.data.isLoading = false;
+        this.data.sendLoadingMessage(false)
       })
     }
   }

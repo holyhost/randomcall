@@ -59,14 +59,14 @@ export class ScoreComponent implements OnInit {
       }
     },err=>{
       // console.log(err)
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
     })
   }
 
   initMyStudents(){
-    this.data.isLoading = true;
+    this.data.sendLoadingMessage()
     this.data.getStudents().subscribe(res=>{
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
     
       if(res && res.status && res.status ==='ok'){
         let temArr: StuBean[] = res.data;
@@ -86,7 +86,7 @@ export class ScoreComponent implements OnInit {
       }
     },err=>{
       // console.log(err)
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
     })
   }
 
@@ -101,17 +101,17 @@ export class ScoreComponent implements OnInit {
 
   onClassCollapseChange(status,index:number){
     if(status && (!this.gradleList[index].data|| this.gradleList[index].data.length<1)){
-      this.data.isLoading = true;
+      this.data.sendLoadingMessage()
       //获取详情
       this.data.getGradleList(this.gradleList[index].gradle.g_id).subscribe(res=>{
-        this.data.isLoading = false;
+        this.data.sendLoadingMessage(false)
     
         if(res && res.status && res.status ==='ok'){
           this.gradleList[index].data = res.data;
         }
       },err=>{
         // console.log(err)
-        this.data.isLoading = false;
+        this.data.sendLoadingMessage(false)
       })
     }
   }

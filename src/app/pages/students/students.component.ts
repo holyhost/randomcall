@@ -33,9 +33,9 @@ export class StudentsComponent implements OnInit {
   }
 
   initMyStudents(){
-    this.data.isLoading = true;
+    this.data.sendLoadingMessage()
     this.data.getStudents().subscribe(res=>{
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
     
       if(res && res.status && res.status ==='ok'){
         let temArr: StuBean[] = res.data;
@@ -53,7 +53,7 @@ export class StudentsComponent implements OnInit {
       }
     },err=>{
       // console.log(err)
-      this.data.isLoading = false;
+      this.data.sendLoadingMessage(false)
     })
   }
 
@@ -98,7 +98,7 @@ export class StudentsComponent implements OnInit {
           this.formatResult = 0;
         }
       },err=>{
-        console.log(err)
+        // console.log(err)
         this.formatResult = 0;
         this.formatErrormsg = '网络请求失败'
       });
