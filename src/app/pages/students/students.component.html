@@ -12,7 +12,7 @@
             >
             <button *ngIf="!classStatus[i].detail"  (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">管理数据</button>
             <button *ngIf="classStatus[i].detail" (click)="onDetailClick(i)" nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">查看名单</button>
-            <button  nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">({{item.stu.length}})人</button>
+            &nbsp;&nbsp;<button  nz-button nzType="primary" class="detail_btn" nzSize="small" nzShape="round">({{item.stu.length}})人</button>
 
             <nz-card *ngIf="!classStatus[i].detail">
                 <div nz-card-grid class="grid_item" *ngFor="let stu of item.stu">{{stu.name}}</div>

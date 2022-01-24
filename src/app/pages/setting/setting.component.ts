@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Config } from 'src/app/services/bean/config.constant';
+import { ClasBean, StuBean } from 'src/app/services/bean/student.type';
 import { DataService } from 'src/app/services/data.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
@@ -14,6 +15,11 @@ export class SettingComponent implements OnInit,OnDestroy {
   randomTime: number = 0
   randomType: string = 'A';
   alink = "";
+  luckyBoys: string = ''
+  luckyDes: string = '';
+  isShowLuckyBoy: boolean = false;
+  dataList: ClasBean [] = [];
+  curClass = '';
   myinfo: any[] = [
     {label:'我的学生',name:'my_students',icon:'#icon-dianmingicon-32',path:'/students'},
     {label:'我的信息',name:'my_info',icon:'#icon-xitong-copy',path:'/myinfo'},
@@ -109,4 +115,49 @@ export class SettingComponent implements OnInit,OnDestroy {
     }
   }
 
+
+  onLuckyClick(){
+    console.log(this.luckyBoys)
+    if(!this.dataList || this.dataList.length<1){
+      this.initMyStudents()
+    }
+    this.isShowLuckyBoy = !this.isShowLuckyBoy;
+    if(this.isShowLuckyBoy){
+      this.luckyDes = this.luckyBoys
+    }else{
+      this.luckyDes = ''
+    }
+  }
+
+  initMyStudents(){
+    this.data.sendLoadingMessage()
+    this.data.getStudents().subscribe(res=>{
+      this.data.sendLoadingMessage(false)
+    
+      if(res && res.status && res.status ==='ok'){
+        let temArr: StuBean[] = res.data;
+        temArr.forEach(stu=>{
+          let tempFind = this.dataList.find(item=>item &&(item.name === stu.curClass));
+          if(tempFind){
+            tempFind.stu.push(stu)
+          }else{
+            let legth = this.dataList.push({name: stu.curClass,stu: []})
+            this.dataList[legth-1].stu.push(stu)
+          }
+        })
+        console.log(this.dataList)
+        if(this.dataList.length>0){
+          this.curClass = this.dataList[0].name
+        }
+      }
+    },err=>{
+      // console.log(err)
+      this.data.sendLoadingMessage(false)
+    })
+  }
+
+  onClassChange(res){
+
+
+  }
 }

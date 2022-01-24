@@ -73,6 +73,27 @@
         </nz-list-item>
         <nz-list-item  style="background: white;">
 
+          <!-- <nz-list-item-meta
+            [nzTitle] = "'item_lucky_boy' | translate"
+            [nzDescription]="luckyDes"
+            (click)="onLuckyClick()"
+          >
+          </nz-list-item-meta> -->
+          <div>
+            <h4 class="ant-list-item-meta-title ng-star-inserted" (click)="onLuckyClick()">{{'item_lucky_boy' | translate}}</h4>
+            <div *ngIf="isShowLuckyBoy">
+              <select class="aselect" [(ngModel)]="curClass" (ngModelChange)="onClassChange($event)" placeholder="选择班级">
+                <ng-container *ngFor="let item of dataList">
+                    <option [value]="item.name">{{item.name}}</option>
+                </ng-container>
+              </select>
+              <textarea rows="3" nz-input [(ngModel)]="luckyBoys" placeholder="多个名字之间用逗号隔开,例如:张三,李四,王五,麻子"></textarea>
+
+            </div>
+          </div>
+        </nz-list-item>
+        <nz-list-item  style="background: white;">
+
           <nz-list-item-meta
             [nzTitle] = "'item_random_modle' | translate"
             [nzDescription]="'message_random_modle' | translate"

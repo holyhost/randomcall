@@ -35,6 +35,21 @@ nz-list-item {
     width: 7rem;
 }
 
+.lucky_boy{
+    width: 40%;
+    max-width: 10rem;
+    margin-right: 0.5rem;
+}
+
+.aselect {
+    color: #17B794;
+    width: 9rem;
+    padding: 2px 3px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
 @media (max-width: 500px) {
 
     .setting-container{
