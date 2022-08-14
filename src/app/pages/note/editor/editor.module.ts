@@ -1,28 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgZorroAntdModule, NzFormModule } from 'ng-zorro-antd';
-import { NoteComponent } from './note.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
-import { NoteRoutingModule } from './note-routing.module';
-import { FooterModule } from 'src/app/widge/footer/footer.module';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NoteEditorComponent } from './editor.component';
+import { NoteEditorRoutingModule } from './editor-routing.module';
 import { HeadModule } from 'src/app/widge/head/head.module';
 
-
-
 @NgModule({
-  declarations: [NoteComponent],
+  declarations: [NoteEditorComponent],
   imports: [
     CommonModule,
     NgZorroAntdModule,
-    NoteRoutingModule,
+    NoteEditorRoutingModule,
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
     HeadModule,
-    FooterModule,
     NzFormModule
   ]
 })
-export class NoteModule { }
+export class NoteEditorModule { }
