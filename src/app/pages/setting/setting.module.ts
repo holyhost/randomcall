@@ -9,7 +9,7 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { FormsModule } from '@angular/forms';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { TranslateModule } from '@ngx-translate/core';
-import { HeadModule } from '../head/head.module';
+import { HeadModule } from '../../widge/head/head.module';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @NgModule({

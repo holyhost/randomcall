@@ -6,8 +6,8 @@ import { RegisterComponent } from './register.component';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { HeadModule } from '../head/head.module';
-import { FooterModule } from '../footer/footer.module';
+import { HeadModule } from '../../widge/head/head.module';
+import { FooterModule } from '../../widge/footer/footer.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 

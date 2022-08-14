@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import {TranslateModule,TranslateLoader,TranslateService} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
-import { HeadModule } from './pages/head/head.module';
+import { HeadModule } from './widge/head/head.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgZorroAntdModule, NzSpinModule } from 'ng-zorro-antd';
 

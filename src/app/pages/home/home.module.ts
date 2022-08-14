@@ -5,9 +5,9 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { HeadModule } from '../head/head.module';
+import { HeadModule } from '../../widge/head/head.module';
 import { GushiModule } from '../gushi/gushi.module';
-import { FooterModule } from '../footer/footer.module';
+import { FooterModule } from '../../widge/footer/footer.module';
 
 @NgModule({
   declarations: [HomeComponent],

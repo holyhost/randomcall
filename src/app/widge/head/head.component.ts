@@ -43,6 +43,7 @@ export class HeadComponent implements OnInit {
       this.router.navigateByUrl("myinfo");
       return;
     }
+    console.log(path)
     this.router.navigateByUrl(path);
   }
 

@@ -5,7 +5,7 @@ import { HelpRoutingModule } from './help-routing.module';
 import { HelpComponent } from './help.component';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { TranslateModule } from '@ngx-translate/core';
-import { HeadModule } from '../head/head.module';
+import { HeadModule } from '../../widge/head/head.module';
 
 @NgModule({
   declarations: [HelpComponent],
