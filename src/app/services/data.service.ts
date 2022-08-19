@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { async } from '@angular/core/testing';
+import { waitForAsync } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, Subject, timer } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/internal/operators';
