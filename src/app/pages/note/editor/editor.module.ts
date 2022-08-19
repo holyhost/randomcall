@@ -7,10 +7,12 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NoteEditorComponent } from './editor.component';
 import { NoteEditorRoutingModule } from './editor-routing.module';
 import { HeadModule } from 'src/app/widge/head/head.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [NoteEditorComponent],
   imports: [
+    MarkdownModule.forChild(),
     CommonModule,
     NgZorroAntdModule,
     NoteEditorRoutingModule,

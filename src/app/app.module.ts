@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule  } from '@angular/platform-browser/animations';
-import { Inject, LOCALE_ID, NgModule } from '@angular/core';
+import { Inject, LOCALE_ID, NgModule,SecurityContext  } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 import { HeadModule } from './widge/head/head.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgZorroAntdModule, NzSpinModule } from 'ng-zorro-antd';
+import { MarkdownModule } from 'ngx-markdown';
+
 
 export function TranslateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,6 +38,10 @@ export function LocaleIdFactory() {
     AppRoutingModule,
     NzSpinModule,
     HeadModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      sanitize: SecurityContext.NONE,
+    }),
     TranslateModule.forRoot({//配置i18n
       loader: {
           provide: TranslateLoader,
