@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
@@ -9,9 +9,9 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  validateForm!: FormGroup;
+  validateForm!: UntypedFormGroup;
   successmsg = '';
-  constructor(private fb: FormBuilder,private data: DataService,private router: Router) { }
+  constructor(private fb: UntypedFormBuilder,private data: DataService,private router: Router) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({

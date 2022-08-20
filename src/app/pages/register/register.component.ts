@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { DataService } from 'src/app/services/data.service';
 export class RegisterComponent implements OnInit {
   regSuccess: boolean  = false;
   successmsg: string = '';
-  validateForm!: FormGroup;
+  validateForm!: UntypedFormGroup;
   isbtn: boolean = true;//允许被点击
-  constructor(private fb: FormBuilder,private data: DataService) { }
+  constructor(private fb: UntypedFormBuilder,private data: DataService) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
