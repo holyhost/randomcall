@@ -9,6 +9,8 @@ import { FooterModule } from '../../widge/footer/footer.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -22,6 +24,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     HeadModule,
     FooterModule,
     NzFormModule,
+    NzInputModule,
+    NzCheckboxModule,
     NzButtonModule
   ]
 })
