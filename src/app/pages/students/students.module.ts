@@ -7,23 +7,26 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HeadModule } from '../../widge/head/head.module';
 import { FooterModule } from '../../widge/footer/footer.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { StudentsComponent } from './students.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @NgModule({
   declarations: [StudentsComponent],
   imports: [
     CommonModule,
-    NgZorroAntdModule,
+    NzCardModule,
+    NzRadioModule,
+    NzAlertModule,
     StudentsRoutingModule,
     TranslateModule,
     FormsModule,
     NzTableModule,
     ReactiveFormsModule,
-    FooterModule,
     HeadModule,
     FooterModule,
     NzCollapseModule,

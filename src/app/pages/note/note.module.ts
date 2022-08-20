@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgZorroAntdModule, NzFormModule } from 'ng-zorro-antd';
 import { NoteComponent } from './note.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,14 +14,12 @@ import { HeadModule } from 'src/app/widge/head/head.module';
   declarations: [NoteComponent],
   imports: [
     CommonModule,
-    NgZorroAntdModule,
     NoteRoutingModule,
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
     HeadModule,
     FooterModule,
-    NzFormModule
   ]
 })
 export class NoteModule { }

@@ -9,13 +9,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HeadModule } from '../../widge/head/head.module';
 import { FooterModule } from '../../widge/footer/footer.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [RegisterComponent],
   imports: [
     CommonModule,
-    NgZorroAntdModule,
+    NzInputModule,
+    NzAlertModule,
+    NzButtonModule,
     RegisterRoutingModule,
     TranslateModule,
     FormsModule,

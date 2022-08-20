@@ -7,17 +7,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HeadModule } from '../../widge/head/head.module';
 import { FooterModule } from '../../widge/footer/footer.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { ScoreComponent } from './score.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 @NgModule({
   declarations: [ScoreComponent],
   imports: [
     CommonModule,
-    NgZorroAntdModule,
+    NzCardModule,
     ScoreRoutingModule,
     TranslateModule,
     FormsModule,
