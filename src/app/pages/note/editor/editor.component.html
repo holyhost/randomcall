@@ -1,8 +1,46 @@
-this is editor page
+<input nz-input
+  class="note-title"
+  [(ngModel)]="nTitle"
+  placeholder="请输入标题" 
+  nzSize="large" />
+<div class="note-tag">
+  <nz-tag
+      *ngFor="let tag of tags; let i = index"
+      [nzMode]="i === 0 ? 'default' : 'closeable'"
+      (nzOnClose)="handleClose(tag)"
+    >
+      {{ sliceTagName(tag) }}
+    </nz-tag>
+    <nz-tag *ngIf="!isTag" class="editable-tag" nzNoAnimation (click)="showInput()">
+      <i nz-icon nzType="plus"></i>
+      标签
+    </nz-tag>
+    <input
+      #inputTag
+      nz-input
+      nzSize="small"
+      *ngIf="isTag"
+      type="text"
+      [(ngModel)]="inputValue"
+      style="width: 78px;"
+      (blur)="handleInputConfirm()"
+      (keydown.enter)="handleInputConfirm()"
+    />
+</div>
+<div class="note-container">
+  <textarea nz-input
+    class="note-editor" 
+    placeholder="Controlled autosize"
+    [(ngModel)]="mdData"
+    [nzAutosize]="{ minRows: 20 }">
+  </textarea>
 
-<markdown
-  lineHighlight
-  [line]="'6, 10-16'"
-  [lineOffset]="5"
-  [data]="mdData">
-</markdown>
+    <markdown
+      class="note-detail" 
+      lineHighlight
+      [line]="'6, 10-16'"
+      [lineOffset]="5"
+      [data]="mdData">
+  </markdown>
+</div>
+

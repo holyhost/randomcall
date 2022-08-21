@@ -6,6 +6,8 @@ import { NoteEditorComponent } from './editor.component';
 import { NoteEditorRoutingModule } from './editor-routing.module';
 import { HeadModule } from 'src/app/widge/head/head.module';
 import { MarkdownModule } from 'ngx-markdown';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 @NgModule({
   declarations: [NoteEditorComponent],
@@ -16,6 +18,8 @@ import { MarkdownModule } from 'ngx-markdown';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
+    NzInputModule,
+    NzTagModule,
     HeadModule,
   ]
 })

@@ -31,7 +31,9 @@
               "src/styles.scss",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "node_modules/prismjs/themes/prism-okaidia.css",
-              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css",
+              "node_modules/prismjs/plugins/command-line/prism-command-line.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js",
