@@ -8,6 +8,15 @@
         "pathRewrite":{
             "^/xampp":"/"
         }
+    },
+    "/online": {
+        "target":"https://pojun.top/",
+        "secure":false,
+        "loglevel":"debug",
+        "changeOrigin":true,
+        "pathRewrite":{
+            "^/online":"/"
+        }
     }
     
 }
