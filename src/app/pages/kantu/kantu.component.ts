@@ -52,4 +52,9 @@ export class KantuComponent implements OnInit {
     this.getImageList(this.page)
   }
 
+  downloadImage(index){
+
+    
+  }
+
 }
