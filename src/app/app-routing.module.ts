@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'students',canActivate: [AuthGuard], loadChildren: () => import('./pages/students/students.module').then(m => m.StudentsModule) },
   { path: 'score', loadChildren: () => import('./pages/score/score.module').then(m => m.ScoreModule) },
   { path: 'note', loadChildren: () => import('./pages/note/note.module').then(m => m.NoteModule) },
+  { path: 'kantu', loadChildren: () => import('./pages/kantu/kantu.module').then(m => m.KantuModule) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 

@@ -480,4 +480,8 @@ export class DataService {
     this.isLoading = value;
     this.sendMessage('isRequest',value?'1':'0')
   }
+
+  getImages(params=''){
+    this.http.get()
+  }
 }

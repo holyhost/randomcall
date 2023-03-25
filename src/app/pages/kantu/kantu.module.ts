@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NoteComponent } from './note.component';
+import { KantuComponent } from './kantu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
-import { NoteRoutingModule } from './note-routing.module';
 import { FooterModule } from 'src/app/widge/footer/footer.module';
 import { HeadModule } from 'src/app/widge/head/head.module';
-import { KantuModule } from '../kantu/kantu.module';
-
-
+import { NoteRoutingModule } from '../note/note-routing.module';
 
 @NgModule({
-  declarations: [NoteComponent],
+  declarations: [KantuComponent],
   imports: [
     CommonModule,
     NoteRoutingModule,
@@ -21,7 +17,9 @@ import { KantuModule } from '../kantu/kantu.module';
     ReactiveFormsModule,
     HeadModule,
     FooterModule,
-    KantuModule
+  ],
+  exports: [
+    KantuComponent
   ]
 })
-export class NoteModule { }
+export class KantuModule { }
