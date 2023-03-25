@@ -37,7 +37,7 @@ export class DataService {
   ) { 
     
     if(!environment.production){
-      this.proxy = "xampp/"
+      this.proxy = "online/"
     }
     
     let time = this.getItem(Config.RandomTime)
@@ -481,7 +481,30 @@ export class DataService {
     this.sendMessage('isRequest',value?'1':'0')
   }
 
-  getImages(params=''){
-    this.http.get()
+  getImages(params: any=null){
+    return this.http.get(this.proxy + "filemng/api/imgs" + this.obj2string(params)).pipe(
+      map((data:any) => {
+        return data;
+      })
+      )
+  }
+
+  obj2string(obj:any):string{
+    let result = ''
+    if(obj){
+      let keys = Object.keys(obj)
+      for(let index=0;index<keys.length;index++){
+        let key = keys[index]
+        let value = obj[key]
+        if(index===0){
+          result = result + "?"+ key + "=" + value
+        }else{
+          result = result + "&"+ key + "=" + value
+        }
+      }
+
+    }
+    console.log(result)
+    return result
   }
 }

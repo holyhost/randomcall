@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FooterModule } from 'src/app/widge/footer/footer.module';
 import { HeadModule } from 'src/app/widge/head/head.module';
 import { NoteRoutingModule } from '../note/note-routing.module';
-
+import { NzImageModule } from 'ng-zorro-antd/image';
 @NgModule({
   declarations: [KantuComponent],
   imports: [
@@ -17,6 +17,7 @@ import { NoteRoutingModule } from '../note/note-routing.module';
     ReactiveFormsModule,
     HeadModule,
     FooterModule,
+    NzImageModule
   ],
   exports: [
     KantuComponent

@@ -1,6 +1,21 @@
 
 <app-head></app-head>
 <div class="container content_container">
-welcome to kantu model
-asdfasd  
+<!-- 图片 -->
+<div class="body-section">
+    <div class="bizhi-list">
+        <ng-container *ngFor="let item of imglist;let index = index">
+            <img class="bizhi-item"
+                nz-image
+                nzSrc="{{item.spath}}" 
+                src="{{item.spath}}" 
+                (click)="onImageClick(index)">
+        </ng-container>
+        <div class="bizhi-item load-more-pic" (click)="onLoadMore()">加载更多</div>
+        <!-- <ng-contai
+        <image class="bizhi-item" bindtap="onImageClick" data-num="{{index}}" mode="aspectFill" src="{{domain}}{{imgprefix}}{{imgitem.spath}}"></image>
+       -->
+    </div>
+  </div> 
 </div>
+

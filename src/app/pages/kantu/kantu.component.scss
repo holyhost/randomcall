@@ -1,90 +1,62 @@
-.container{
-    // display: flex;
-    // justify-content: space-around;
-    // flex-wrap: wrap;
-
-    column-count: 3; /*css3新增，把contaner容器中的内容分为三列*/
-    column-gap: 2rem; /*定义列之间的间隙为20px*/
-    padding: 2rem 1rem;
-    
-}
-
-.content_container{
-    width: 80%;
-    margin-bottom: 2rem;
-}
-
-.gushi_item{
-    text-align: center;
-    padding: 2em;
-    margin-bottom: 30px;
-    position: relative;
-    background: #fff;
-    -webkit-box-shadow: 0px 22px 68px -9px rgb(0 0 0 / 15%);
-    -moz-box-shadow: 0px 22px 68px -9px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 22px 68px -9px rgb(0 0 0 / 15%);
-    bottom: 0;
-    border-radius: 5px;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-    // animation: gushi_move 3s forwards;
-    // animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    -webkit-column-break-inside: avoid;
-      break-inside: avoid;
-      counter-increment: item-counter;
 
 
-    h3{
-        text-align: center;
-        letter-spacing: .1rem;
-        font-weight: 600;
-        svg{
-            color: #17B794;
-        }
-        margin-left: -1rem;
+.bizhi-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 1rem 1rem;
+  }
+  
+  .bizhi-item{
+    height: 18rem;
+    width: 11rem;
+    border: solid 1px white;
+    border-radius: 8px;
+    margin-top: .4rem;
+    object-fit: cover
+  }
+
+  .load-more-pic{
+    display: flex;
+    background: gray;
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    justify-content: center;
+    align-items: center;
+  }
+
+@media (max-width: 1000px) {
+    .bizhi-item{
+        height: 15rem;
+        width: 9rem;
     }
-    p{
-        letter-spacing: .22rem;
-        color: black;
-    }
-}
-@keyframes gushi_move{
-    from {top: 10px;}
-    to {top:100px;}
+
 }
 
-
-@media (max-width: 850px) {
-
-    .container{
-        // display: flex;
-        // justify-content: space-around;
-        // flex-wrap: wrap;
-    
-        column-count: 2; /*css3新增，把contaner容器中的内容分为三列*/
-        column-gap: 2rem; /*定义列之间的间隙为20px*/
-        padding: 1rem 1rem;
-    }
+@media (max-width: 700px) {
     .content_container{
-        width: 80%;
+        width: 70%;
+    }
+
+    .bizhi-item{
+        height: 15rem;
+        width: 9rem;
     }
 
 }
+
 @media (max-width: 500px) {
-
-    .container{
-        // display: flex;
-        // justify-content: space-around;
-        // flex-wrap: wrap;
-    
-        column-count: 1; /*css3新增，把contaner容器中的内容分为三列*/
-        column-gap: 2rem; /*定义列之间的间隙为20px*/
-        padding: 1rem 1rem;
-    }
     .content_container{
-        width: 98%;
+        width: 94%;
+    }
+
+    .ant-card-body {
+        padding: 8px 12px !important;
+    }
+
+    .bizhi-item{
+        height: 9rem;
+        width: 6rem;
     }
 
 }
-
