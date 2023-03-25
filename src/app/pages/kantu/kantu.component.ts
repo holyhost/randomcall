@@ -36,10 +36,11 @@ export class KantuComponent implements OnInit {
       if(this.page == 0) this.imglist = []
       if(res && res.status && res.status === "ok"){
         res.data.map(item=>{
-          if(item.bpath.indexOf(".mp4") || item.bpath.indexOf(".avi")){
-            item.spath = "/app/pictures/logo.png"
+          if(item.bpath.indexOf(".mp4")>10 || item.bpath.indexOf(".avi")>10){
+            item.spath = "/app/assets/pictures/logo.png"
+          }else{
+            item.spath = "/app" + item.spath 
           }
-          item.spath = "/app/" +item.spath
           this.imglist.push(item)
         })
       }
