@@ -14,7 +14,7 @@
                 nzSrc="{{item.spath}}" 
                 src="{{item.spath}}" 
                 (click)="onImageClick(index)">
-                <div  class="img-download"><a style="color: white;" href="{{item.bpath}}" download>下载</a></div>
+                <div  class="img-download"><a style="color: white;" href="{{'/app'+item.bpath}}" download>下载</a></div>
             </div>
 
         </ng-container>
