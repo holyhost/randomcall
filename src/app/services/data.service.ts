@@ -23,7 +23,7 @@ export class DataService {
   account = '';
   pwd = '';
   redirectUrl = '';
-  proxy = "";
+  proxy = "/";
   isLoading: boolean = true
   allData: AllClass[] = []//所有班级及学生数据
   randomTime: number = 5;//随机时间

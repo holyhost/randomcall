@@ -29,14 +29,17 @@ export class KantuComponent implements OnInit {
 
   getImageList(page=0){
     let params = {
-      type: "游戏",
+      type: "latest",
       page: page
     }
     this.data.getImages(params).subscribe(res=>{
       if(this.page == 0) this.imglist = []
       if(res && res.status && res.status === "ok"){
         res.data.map(item=>{
-          item.spath = "https://pojun.top/app/" +item.spath
+          if(item.bpath.indexOf(".mp4") || item.bpath.indexOf(".avi")){
+            item.spath = "/app/pictures/logo.png"
+          }
+          item.spath = "/app/" +item.spath
           this.imglist.push(item)
         })
       }
