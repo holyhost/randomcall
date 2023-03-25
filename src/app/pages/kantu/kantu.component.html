@@ -1,6 +1,8 @@
 
 <app-head></app-head>
+
 <div class="container content_container">
+    <a href="/filemng/api/upload">上传文件</a>
 <!-- 图片 -->
 <div class="body-section">
     <div class="bizhi-list">
@@ -12,9 +14,6 @@
                 (click)="onImageClick(index)">
         </ng-container>
         <div class="bizhi-item load-more-pic" (click)="onLoadMore()">加载更多</div>
-        <!-- <ng-contai
-        <image class="bizhi-item" bindtap="onImageClick" data-num="{{index}}" mode="aspectFill" src="{{domain}}{{imgprefix}}{{imgitem.spath}}"></image>
-       -->
     </div>
   </div> 
 </div>
