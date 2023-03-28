@@ -9,7 +9,10 @@
         <nz-image-group class="bizhi-list">
         <ng-container *ngFor="let item of imglist;let index = index">
             <div class="imgcover">
-                <img class="bizhi-item"
+                <video *ngIf="item.status === 2"  controls class="shipin-item">
+                    <source src="{{item.bpath}}"  type="video/mp4">
+                </video>
+                <img *ngIf="item.status === 1" class="bizhi-item"
                 nz-image
                 nzSrc="{{item.spath}}" 
                 src="{{item.spath}}" 
@@ -23,4 +26,5 @@
     </div>
   </div> 
 </div>
+<app-footer></app-footer>
 
